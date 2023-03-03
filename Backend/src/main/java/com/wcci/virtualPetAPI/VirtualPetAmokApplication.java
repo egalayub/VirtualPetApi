@@ -1,5 +1,6 @@
 package com.wcci.virtualPetAPI;
 
+import com.wcci.virtualPetAPI.entities.*;
 import entities.*;
 
 import java.util.Scanner;
