@@ -1,4 +1,6 @@
-package com.wcci.virtualPetAPI;
+package entities;
+
+import repositories.OrganicPet;
 
 public class OrganicDog extends VirtualOrganicPet implements OrganicPet {
    protected int hunger;

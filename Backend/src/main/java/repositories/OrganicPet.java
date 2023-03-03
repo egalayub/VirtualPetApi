@@ -1,4 +1,4 @@
-package com.wcci.virtualPetAPI;
+package repositories;
 
 public interface OrganicPet {
     void walk();
