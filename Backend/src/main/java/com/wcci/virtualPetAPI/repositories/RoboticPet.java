@@ -1,4 +1,4 @@
-package repositories;
+package com.wcci.virtualPetAPI.repositories;
 
 public interface RoboticPet {
 

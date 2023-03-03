@@ -1,4 +1,4 @@
-package entities;
+package com.wcci.virtualPetAPI.entities;
 
 import java.util.Map;
 

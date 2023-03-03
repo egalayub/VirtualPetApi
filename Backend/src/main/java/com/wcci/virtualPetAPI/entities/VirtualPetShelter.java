@@ -1,8 +1,4 @@
-package entities;
-
-import entities.VirtualOrganicPet;
-import entities.VirtualPet;
-import entities.VirtualRoboticPet;
+package com.wcci.virtualPetAPI.entities;
 
 import java.util.Collection;
 import java.util.HashMap;
