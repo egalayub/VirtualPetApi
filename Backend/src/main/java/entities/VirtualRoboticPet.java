@@ -1,6 +1,8 @@
-package com.wcci.virtualPetAPI;
+package entities;
 
-public class VirtualRoboticPet extends VirtualPet{
+import entities.VirtualPet;
+
+public class VirtualRoboticPet extends VirtualPet {
     protected String name;
    protected int happiness;
    protected int health;

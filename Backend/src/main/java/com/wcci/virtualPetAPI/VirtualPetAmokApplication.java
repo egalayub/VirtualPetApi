@@ -1,5 +1,7 @@
 package com.wcci.virtualPetAPI;
 
+import entities.*;
+
 import java.util.Scanner;
 
 public class VirtualPetAmokApplication {

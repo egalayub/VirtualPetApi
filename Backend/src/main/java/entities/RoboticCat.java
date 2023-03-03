@@ -1,4 +1,6 @@
-package com.wcci.virtualPetAPI;
+package entities;
+
+import repositories.RoboticPet;
 
 public class RoboticCat extends VirtualRoboticPet implements RoboticPet {
 
