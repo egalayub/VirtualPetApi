@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 public class VirtualPetShelter {
 
     Map<String, VirtualOrganicPet> myOrganicShelter = new HashMap<>();
-    Map<String, VirtualRoboticPet> myRoboticShelter = new HashMap<String, VirtualRoboticPet>();
+    Map<String, VirtualRoboticPet> myRoboticShelter = new HashMap<>();
 
 
 //    Map<String, VirtualPet> myShelter = new HashMap<>();
@@ -86,6 +86,8 @@ public class VirtualPetShelter {
             );
         }
     }
+
+
 
     public void getPetStats(VirtualPet adoptablePet) {
         for (Entry<String, VirtualOrganicPet> entry : myOrganicShelter.entrySet()) {
@@ -192,7 +194,7 @@ public class VirtualPetShelter {
         }
     }
 
-    public void tickAllPets(VirtualPet pets3) {
+    public void tickAllPets() {
     }
 
     public void oilAllRobots() {
