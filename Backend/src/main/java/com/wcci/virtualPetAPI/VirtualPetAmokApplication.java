@@ -8,25 +8,37 @@ import java.util.Scanner;
 public class VirtualPetAmokApplication {
     public static void main(String[] args) {
 
-        VirtualOrganicPet pet = new OrganicDog("Oscar ", 10, 10, 10, 10, 10);
+        VirtualOrganicPet pet = new OrganicDog("Oscar   Dog", 10, 10, 10, 10, 10);
         VirtualPetShelter myOrganicShelter = new VirtualPetShelter();
         myOrganicShelter.addOrganicPet(pet);
 
-        VirtualRoboticPet pet2 = new RoboticDog("Wrigley ", 10, 10, 20, 10);
+        VirtualRoboticPet pet2 = new RoboticDog("Wrigley   Dog", 10, 10, 20, 10);
         VirtualPetShelter myRoboticShelter = new VirtualPetShelter();
         myRoboticShelter.addRoboticPet(pet2);
 
-        VirtualOrganicPet pet3 = new OrganicCat("Raymond ", 10, 10, 20, 15, 10);
+        VirtualOrganicPet pet3 = new OrganicCat("Raymond   Cat", 10, 10, 20, 15, 10);
         VirtualPetShelter myOrganicShelter2 = new VirtualPetShelter();
         myOrganicShelter2.addOrganicPet(pet3);
 
-        VirtualRoboticPet pet4 = new RoboticCat("Whiskers ", 10, 10, 10, 10);
+        VirtualRoboticPet pet4 = new RoboticCat("Whiskers   Cat", 10, 10, 10, 10);
         VirtualPetShelter myRoboticShelter2 = new VirtualPetShelter();
         myRoboticShelter2.addRoboticPet(pet4);
 
         Scanner input = new Scanner(System.in);
         boolean run = true;
 
+        System.out.println();
+        System.out.println();
+        myOrganicShelter.tickAllPets();
+        myOrganicShelter2.tickAllPets();
+        myRoboticShelter.tickAllPets();
+        myRoboticShelter2.tickAllPets();
+        myOrganicShelter.showOrganicPets();
+        myOrganicShelter2.showOrganicPets();
+        myRoboticShelter.showAllRoboticPets();
+        myRoboticShelter2.showAllRoboticPets();
+        System.out.println();
+        System.out.println();
         System.out.println("Welcome to Playful pet looking for parents");
 
         String showMenu = """
@@ -45,6 +57,8 @@ public class VirtualPetAmokApplication {
                 \t 10. Show pet in shelter
                 \t 11. Quit""";
 
+        System.out.println(showMenu);
+
         int userChoice;
         // while (myOrganicShelter.hasPets()) {
         do {
@@ -55,70 +69,120 @@ public class VirtualPetAmokApplication {
                 case 1 -> {
                     myOrganicShelter.tickAllPets();
                     myOrganicShelter2.tickAllPets();
+                    myOrganicShelter.showOrganicPets();
                     myOrganicShelter2.showOrganicPets();
                     myOrganicShelter.feedPets();
                     System.out.println();
-                    System.out.println("You feed all organic pet");
+                    System.out.println("You feed all organic pets");
+                    System.out.println();
+                    System.out.println(showMenu);
+
                 }
                 //water organic pet
                 case 2 -> {
+                    myOrganicShelter.tickAllPets();
                     myOrganicShelter2.tickAllPets();
-                    myOrganicShelter2.tickAllPets();
-                    myOrganicShelter2.showOrganicPets();
+                    myOrganicShelter.showOrganicPets();
                     myOrganicShelter2.showOrganicPets();
                     myOrganicShelter.waterAllPets();
+                    myOrganicShelter2.waterAllPets();
+                    System.out.println();
                     System.out.println("You watered all organic pet");
+                    System.out.println(showMenu);
                 }
                 //Clean all dogs cages.
                 case 3 -> {
                     myOrganicShelter.tickAllPets();
-                    myOrganicShelter.tickAllPets();
-                    myOrganicShelter.showOrganicPets();
-                    myOrganicShelter.cleanAllCages();
-                    System.out.println("Organic Dog and Cat cage cleaned");
-                }
-                case 4-> {
                     myOrganicShelter2.tickAllPets();
+                    myOrganicShelter.showOrganicPets();
                     myOrganicShelter2.showOrganicPets();
+                    myOrganicShelter.cleanAllCages();
+                    System.out.println();
+                    System.out.println("Organic Dog and Cat cage cleaned");
+                    System.out.println(showMenu);
+                }
+
+                case 4-> {
+
+                    myOrganicShelter.tickAllPets();
+                    myOrganicShelter2.tickAllPets();
+                    myRoboticShelter.tickAllPets();
+                    myRoboticShelter2.tickAllPets();
+                    myOrganicShelter.showOrganicPets();
+                    myOrganicShelter2.showOrganicPets();
+                    myRoboticShelter.showAllRoboticPets();
+                    myRoboticShelter2.showAllRoboticPets();
                     myOrganicShelter2.emptyLitterBox();
                     System.out.println();
                     System.out.println("LitterBox Cleaned");
+                    System.out.println();
                     System.out.println("Litter has been replaced in cats litter box.");
+                    System.out.println(showMenu);
                 }
                 //Walk all dogs.
                 case 5 -> {
+                    myOrganicShelter.tickAllPets();
                     myOrganicShelter2.tickAllPets();
+                    myRoboticShelter.tickAllPets();
+                    myRoboticShelter2.tickAllPets();
+                    myOrganicShelter.showOrganicPets();
                     myOrganicShelter2.showOrganicPets();
                     myRoboticShelter.showAllRoboticPets();
-                    myOrganicShelter.showOrganicPets();
                     myRoboticShelter2.showAllRoboticPets();
-                    myOrganicShelter2.walkDogs();
-                    System.out.println("All organic and robotic pet have been walked");
+                    myOrganicShelter.walkDogs();
+                    System.out.println();
+                    System.out.println("All dogs have been walked");
+                    System.out.println();
+                    System.out.println(showMenu);
                 }
                 //Oil all Robotic Pets
                 case 6 -> {
-                    myOrganicShelter2.showOrganicPets();
+
                     myRoboticShelter.showAllRoboticPets();
                     myRoboticShelter2.showAllRoboticPets();
                     myOrganicShelter.tickAllPets();
+                    myOrganicShelter2.tickAllPets();
                     myOrganicShelter.tickAllPets();
-                    myOrganicShelter.oilAllRobots();
+                    myOrganicShelter2.tickAllPets();
+                    myRoboticShelter.oilAllRobots();
+                    myOrganicShelter2.oilAllRobots();
                     System.out.println();
                     System.out.println("All robotic pet parts have been oiled");
+                    System.out.println();
+                    System.out.println(showMenu);
+
                 }
                 //Pet adoption.
                 case 7 -> {
                     myOrganicShelter.tickAllPets();
                     myOrganicShelter2.tickAllPets();
+                    myRoboticShelter.tickAllPets();
+                    myRoboticShelter2.tickAllPets();
                     myOrganicShelter.showOrganicPets();
+                    myOrganicShelter2.showOrganicPets();
+                    myRoboticShelter.showAllRoboticPets();
+                    myRoboticShelter2.showAllRoboticPets();
+                    System.out.println();
                     System.out.println("Would you like to adopt one of the pet?");
                     String upForAdoptions = input.nextLine();
                     myOrganicShelter.removeOrganicPet(upForAdoptions);
+                    myOrganicShelter2.removeOrganicPet(upForAdoptions);
                     System.out.println("Pet has been adopted" + upForAdoptions);
+                    System.out.println();
+
                 }
                 //Add a pet.
                 case 8 -> {
                     myOrganicShelter.tickAllPets();
+                    myOrganicShelter2.tickAllPets();
+                    myRoboticShelter.tickAllPets();
+                    myRoboticShelter2.tickAllPets();
+                    myOrganicShelter.showOrganicPets();
+                    myOrganicShelter2.showOrganicPets();
+                    myRoboticShelter.showAllRoboticPets();
+                    myRoboticShelter2.showAllRoboticPets();
+
+
                     System.out.println(
                             "Do you have a: \n\t A. Organic Dog \n\t B. Organic Cat \n\t C. Robotic Dog \n\t D. Robotic Cat");
                     String petType = input.nextLine();
@@ -153,25 +217,33 @@ public class VirtualPetAmokApplication {
                             myRoboticShelter.addRoboticPet(newRoboticCat);
                         }
                     }
-                    System.out.println("Congratulations! You've got a new pet!");
+//                    System.out.println("Congratulations! You've got a new pet!");
+//                    System.out.println(showMenu);
                 }
 
                 // play wit pet
                 case 9 -> {
                     myOrganicShelter.tickAllPets();
                     myOrganicShelter2.tickAllPets();
+                    myRoboticShelter.tickAllPets();
+                    myRoboticShelter2.tickAllPets();
                     System.out.println("Which pet would you like to play with?");
                     System.out.println();
-                    myOrganicShelter.showPetName(pet);
+                    myOrganicShelter.showOrganicPets();
+                    myOrganicShelter2.showOrganicPets();
+                    myRoboticShelter.showAllRoboticPets();
+                    myRoboticShelter2.showAllRoboticPets();
                     String chosenPet = input.nextLine();
                     VirtualPet playPet = myOrganicShelter.getPetNamed(chosenPet);
                     playPet.play();
                     System.out.println(chosenPet + " had a great time!");
                 }
+
                 case 10 -> {
                     myOrganicShelter.tickAllPets();
                     myOrganicShelter2.tickAllPets();
                     myRoboticShelter.tickAllPets();
+                    myOrganicShelter2.tickAllPets();
                     System.out.println("These are the pet in the shelter: ");
                     myOrganicShelter.showOrganicPets();
                     myRoboticShelter.showAllRoboticPets();
