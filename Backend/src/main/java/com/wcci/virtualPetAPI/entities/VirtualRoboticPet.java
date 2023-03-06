@@ -23,8 +23,8 @@ public class VirtualRoboticPet extends VirtualPet {
         return name;
     }
 
-    public String getRoboticPetType(){
-        return "Robotic";
+    public String getRoboticPetName(){
+        return name;
     }
 
     public int happiness(){

@@ -21,8 +21,8 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPet {
 
     // Getters
   @Override
-    public String getOrganicPetType() {
-        return "Organic";
+    public String getOrganicPetName() {
+        return name;
     }
 
     public int getPetThirst() {
