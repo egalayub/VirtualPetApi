@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Shelter {
+public class ShelterController {
     private ShelterRepository shelterRepository;
 
-    public Shelter(final @Autowired ShelterRepository shelterRepository) {
+    public ShelterController(final @Autowired ShelterRepository shelterRepository) {
         this.shelterRepository = shelterRepository;
     }
 
