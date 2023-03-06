@@ -7,7 +7,7 @@ import java.util.Map.Entry;
 
 public class VirtualPetShelter {
 
-    Map<String, VirtualOrganicPet> myShelter = new HashMap<>();
+    Map<String, VirtualOrganicPet> myOrganicShelter = new HashMap<>();
     Map<String, VirtualRoboticPet> myRoboticShelter = new HashMap<>();
 
 
@@ -37,17 +37,17 @@ public class VirtualPetShelter {
     }
 
     public void removeRoboticPet(String adoptablePet) {
-        myShelter.remove( adoptablePet);
+        myOrganicShelter.remove( adoptablePet);
     }
 
 
     public void addOrganicPet(VirtualOrganicPet adoptablePet) {
         String petsAvailable = adoptablePet.getOrganicPetType();
-        myShelter.put(petsAvailable, adoptablePet);
+        myOrganicShelter.put(petsAvailable, adoptablePet);
     }
 
     public void removeOrganicPet(String adoptablePet) {
-        myShelter.remove( adoptablePet);
+        myOrganicShelter.remove( adoptablePet);
     }
 
 
@@ -61,8 +61,7 @@ public class VirtualPetShelter {
 
 
     public void showOrganicPets() {
-        for (Map.Entry<String, VirtualOrganicPet> entry : myShelter.entrySet()) {
-            entry.getValue();
+        for (Map.Entry<String, VirtualOrganicPet> entry : myOrganicShelter.entrySet()) {
             System.out.println("Name: " + entry.getValue().getName()
                     + "\t| Type: " + entry.getValue().getOrganicPetType()
                     + "\t| Health: " + entry.getValue().getHealth()
@@ -79,8 +78,7 @@ public class VirtualPetShelter {
 
 
     public void showAllRoboticPets() {
-        for (Map.Entry<String, VirtualRoboticPet> entry : myShelter.entrySet()) {
-            entry.getValue();
+        for (Map.Entry<String, VirtualRoboticPet> entry : myRoboticShelter.entrySet()) {
             System.out.println("Name: " + entry.getKey()
                     + "\t| Type: " + entry.getValue().getRoboticPetType()
                     + "\t| Health: " + entry.getValue().getRoboticPetHealth()
@@ -95,7 +93,7 @@ public class VirtualPetShelter {
 
 
     public void getPetStats(VirtualPet adoptablePet) {
-        for (Entry<String, VirtualOrganicPet> entry : myShelter.entrySet()) {
+        for (Entry<String, VirtualOrganicPet> entry : myOrganicShelter.entrySet()) {
             entry.getValue();
             System.out.println("Name : " + entry.getKey() + "\t| Health " + entry.getValue().getHealth()
                     + "\t| Happiness: " + entry.getValue().getHappiness());
@@ -103,16 +101,16 @@ public class VirtualPetShelter {
     }
 
     public VirtualPet getPetNamed(String name) {
-        return myShelter.get(name);
+        return myOrganicShelter.get(name);
     }
 
     public void playPets(){
-        for (Entry<String, VirtualOrganicPet> pet : myShelter.entrySet()){
+        for (Entry<String, VirtualOrganicPet> pet : myOrganicShelter.entrySet()){
             pet.getValue().play();
         }
     }
     public void feedPets(){
-        for (Entry<String, VirtualOrganicPet> pet : myShelter.entrySet()){
+        for (Entry<String, VirtualOrganicPet> pet : myOrganicShelter.entrySet()){
             pet.getValue().feed();
 
         }
