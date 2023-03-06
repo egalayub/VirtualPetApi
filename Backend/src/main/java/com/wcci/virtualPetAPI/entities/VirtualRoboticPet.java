@@ -5,7 +5,7 @@ public class VirtualRoboticPet extends VirtualPet {
    protected int happiness;
    protected int health;
    private int oil;
-   private int batteryLife;
+   private final int batteryLife;
 
 
 
