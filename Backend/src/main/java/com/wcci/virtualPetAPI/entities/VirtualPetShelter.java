@@ -32,22 +32,22 @@ public class VirtualPetShelter {
 
 
     public void addRoboticPet(VirtualRoboticPet adoptablePet) {
-        String petsAvailable = adoptablePet.getRoboticPetType();
-        myRoboticShelter.put(petsAvailable, adoptablePet);
+        String name = adoptablePet.getRoboticPetName();
+        myRoboticShelter.put(name, adoptablePet);
     }
 
     public void removeRoboticPet(String adoptablePet) {
-        myOrganicShelter.remove( adoptablePet);
+        myRoboticShelter.remove(adoptablePet);
     }
 
 
     public void addOrganicPet(VirtualOrganicPet adoptablePet) {
-        String petsAvailable = adoptablePet.getOrganicPetType();
-        myOrganicShelter.put(petsAvailable, adoptablePet);
+        String name = adoptablePet.getOrganicPetName();
+        myOrganicShelter.put(name, adoptablePet);
     }
 
     public void removeOrganicPet(String adoptablePet) {
-        myOrganicShelter.remove( adoptablePet);
+        myOrganicShelter.remove(adoptablePet);
     }
 
 
@@ -57,13 +57,15 @@ public class VirtualPetShelter {
         return myRoboticShelter.values();
     }
 
-
+    public Collection<VirtualOrganicPet> availableOrganicPets() {
+        return myOrganicShelter.values();
+    }
 
 
     public void showOrganicPets() {
         for (Map.Entry<String, VirtualOrganicPet> entry : myOrganicShelter.entrySet()) {
             System.out.println("Name: " + entry.getValue().getName()
-                    + "\t| Type: " + entry.getValue().getOrganicPetType()
+                    + "\t| Type: " + entry.getValue().getOrganicPetName()
                     + "\t| Health: " + entry.getValue().getHealth()
                     + "\t| Happiness: " + entry.getValue().getHappiness()
                     + "\t| Hunger: " + entry.getValue().getPetHunger()
@@ -79,8 +81,8 @@ public class VirtualPetShelter {
 
     public void showAllRoboticPets() {
         for (Map.Entry<String, VirtualRoboticPet> entry : myRoboticShelter.entrySet()) {
-            System.out.println("Name: " + entry.getKey()
-                    + "\t| Type: " + entry.getValue().getRoboticPetType()
+            System.out.println("Name: " + entry.getValue().getName()
+                    + "\t| Type: " + entry.getValue().getRoboticPetName()
                     + "\t| Health: " + entry.getValue().getRoboticPetHealth()
                     + "\t| Happiness: " + entry.getValue().happiness()
                     + "\t| Oil Level: " + entry.getValue().oil()
@@ -89,7 +91,6 @@ public class VirtualPetShelter {
             );
         }
     }
-
 
 
     public void getPetStats(VirtualPet adoptablePet) {
@@ -104,13 +105,15 @@ public class VirtualPetShelter {
         return myOrganicShelter.get(name);
     }
 
-    public void playPets(){
-        for (Entry<String, VirtualOrganicPet> pet : myOrganicShelter.entrySet()){
+
+    public void playPets() {
+        for (Entry<String, VirtualOrganicPet> pet : myOrganicShelter.entrySet()) {
             pet.getValue().play();
         }
     }
-    public void feedPets(){
-        for (Entry<String, VirtualOrganicPet> pet : myOrganicShelter.entrySet()){
+
+    public void feedPets() {
+        for (Entry<String, VirtualOrganicPet> pet : myOrganicShelter.entrySet()) {
             pet.getValue().feed();
 
         }

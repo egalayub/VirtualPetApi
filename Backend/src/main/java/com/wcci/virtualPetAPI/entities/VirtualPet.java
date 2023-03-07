@@ -24,7 +24,7 @@ public class VirtualPet {
         return name;
     }
 
-    public String getOrganicPetType() {
+    public String getOrganicPetName() {
         return "Organic";
     }
 
