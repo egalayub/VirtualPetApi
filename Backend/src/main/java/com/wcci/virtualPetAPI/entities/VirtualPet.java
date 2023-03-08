@@ -1,16 +1,19 @@
 package com.wcci.virtualPetAPI.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Map;
 
 @Entity
 public class VirtualPet {
 
     @Id
+    @GeneratedValue
     protected final String name;
     protected int happiness;
     protected int health;
+
+    @OneToMany
+    private VirtualPet virtualPet;
 
 
 

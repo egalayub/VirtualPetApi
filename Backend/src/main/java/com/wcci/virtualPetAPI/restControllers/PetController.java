@@ -3,20 +3,15 @@ package com.wcci.virtualPetAPI.restControllers;
 import com.wcci.virtualPetAPI.entities.RoboticDog;
 import com.wcci.virtualPetAPI.entities.VirtualPet;
 import com.wcci.virtualPetAPI.repositories.PetRepository;
-import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-import org.springframework.boot.context.properties.source.InvalidConfigurationPropertyValueException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.security.PublicKey;
 import java.util.Optional;
 
 @RestController
-public class cdPetController {
+public class PetController {
     final private PetRepository petRepository;
 
     public PetController (final @Autowired PetRepository petRepository){

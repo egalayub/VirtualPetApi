@@ -2,6 +2,9 @@ package com.wcci.virtualPetAPI.entities;
 
 import com.wcci.virtualPetAPI.repositories.RoboticPet;
 
+import javax.persistence.Entity;
+
+@Entity
 public class RoboticCat extends VirtualRoboticPet implements RoboticPet {
 
     protected int batteryLife;
