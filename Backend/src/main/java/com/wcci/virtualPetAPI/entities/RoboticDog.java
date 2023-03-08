@@ -14,8 +14,8 @@ public class RoboticDog extends VirtualRoboticPet implements RoboticPet {
     protected int batteryLife;
     protected int oil;
 
-    @OneToMany(mappedBy = "pets")
-    private Collection<VirtualPet>virtualPets;
+    @ManyToOne
+    public VirtualPet virtualPet;
 
     public RoboticDog(String name, int happiness, int health, int oil, int batteryLife) {
         super(name, happiness, health, oil, batteryLife);

@@ -2,10 +2,23 @@ package com.wcci.virtualPetAPI.entities;
 
 import com.wcci.virtualPetAPI.repositories.OrganicPet;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class OrganicDog extends VirtualOrganicPet implements OrganicPet {
+
+    @Id
+    @GeneratedValue
+    private Long id;
    protected int hunger;
    protected int thirst;
    protected int waste;
+
+    @ManyToOne
+    public VirtualPet virtualPet;
 
     public OrganicDog(String name, int happiness, int health, int hunger, int thirst, int waste) {
         super(name, happiness, health, hunger, thirst, waste);

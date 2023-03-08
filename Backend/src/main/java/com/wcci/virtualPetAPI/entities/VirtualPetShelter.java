@@ -1,10 +1,13 @@
 package com.wcci.virtualPetAPI.entities;
 
+import javax.persistence.Entity;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+
+@Entity
 public class VirtualPetShelter {
 
     final Map<String, VirtualOrganicPet> myOrganicShelter = new HashMap<>();

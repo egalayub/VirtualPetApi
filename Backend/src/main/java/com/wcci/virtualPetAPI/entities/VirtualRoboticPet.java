@@ -1,11 +1,23 @@
 package com.wcci.virtualPetAPI.entities;
 
+import javax.persistence.*;
+
+@Entity
+
 public class VirtualRoboticPet extends VirtualPet {
+
+
+    @Id
+    @GeneratedValue
+    private Long id;
     protected String name;
    protected int happiness;
    protected int health;
    private int oil;
    private final int batteryLife;
+
+    @OneToMany
+    public VirtualPet virtualPet;
 
 
 

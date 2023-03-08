@@ -12,7 +12,7 @@ public class VirtualPet {
     protected int happiness;
     protected int health;
 
-    @OneToMany
+    @OneToMany(mappedBy = "/pets")
     private VirtualPet virtualPet;
 
 
