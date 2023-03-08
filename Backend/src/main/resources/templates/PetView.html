@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Pet View</title>
@@ -11,45 +11,43 @@
 <header>Welcome to the Java Junkie Shelter!</header>
 
 <!-- Pet name section -->
-<h1>Here is PetName</h1>
+<h1>Here is <span th:text="${name}"></span></h1>
 
 <!-- Pet image section -->
 <h3>Look how cute this pet is!</h3>
 <img src="https://www.heart.org/-/media/Healthy-Living-Images/Healthy-Lifestyle/Pets/puppy-kitten-heart.jpg" alt="puppy">
 
 <!-- Pet stats section -->
-<h4>Here are PetName's stats</h4>
+<h4>Here are <span th:text="${name}"></span>'s stats</h4>
 <ul>
     <!-- Pet hunger stat -->
-    <li>Hunger: 0</li>
+    <li>Hunger: <span th:text="${hunger}"></span></li>
     <!-- Pet happiness stat -->
-    <li>Happiness: 0</li>
+    <li>Happiness: <span th:text="${happiness}"></span></li>
     <!-- Pet energy stat -->
-    <li>Energy: 0</li>
+    <li>Health: <span th:text="${health}"></span></li>
     <!-- Pet waste stat -->
-    <li>Waste: 0</li>
+    <li>Waste: <span th:text="${waste}"></span></li>
 </ul>
 
 <!-- Pet actions section -->
-<h5>Here are PetName's actions</h5>
+<h5>Here are <span th:text="${name}"></span>'s actions</h5>
 <ul>
     <!-- Feed action -->
-    <li><a href="#">Feed</a></li>
+    <li><a th:href="@{${'/feed/' + name}}">Feed</a></li>
     <!-- Play action -->
-    <li><a href="#">Play</a></li>
-    <!-- Sleep action -->
-    <li><a href="#">Sleep</a></li>
+    <li><a th:href="@{${'/play/' + name}}">Play</a></li>
     <!-- Clean action -->
-    <li><a href="#">Clean</a></li>
+    <li><a th:href="@{${'/clean/' + name}}">Clean</a></li>
 </ul>
 
 <!-- Adoption section -->
 <h5>Want to adopt?</h5>
 <ul>
     <!-- Yes adoption option -->
-    <li><a href="#">Yes</a></li>
+    <li><a th:href="@{/adopt/{name}(id=${name})}">Yes</a></li>
     <!-- If no, then we will go back to the main page -->
-    <li><a href="../Backend/src/main/resources/templates/shelterView.html">No</a></li>
+    <li><a href="shelterView.html">No</a></li>
 </ul>
 
 <!-- Dog image section -->
