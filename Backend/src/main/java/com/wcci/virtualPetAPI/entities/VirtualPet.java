@@ -1,11 +1,19 @@
 package com.wcci.virtualPetAPI.entities;
 
+import javax.persistence.*;
 import java.util.Map;
 
+@Entity
 public class VirtualPet {
+
+    @Id
+    @GeneratedValue
     protected final String name;
     protected int happiness;
     protected int health;
+
+    @OneToMany
+    private VirtualPet virtualPet;
 
 
 
@@ -25,7 +33,7 @@ public class VirtualPet {
     }
 
     public String getOrganicPetName() {
-        return "Organic";
+        return name;
     }
 
     public int getHappiness() {
@@ -84,5 +92,4 @@ public class VirtualPet {
         return new Map.Entry[0];
     }
 }
-
 

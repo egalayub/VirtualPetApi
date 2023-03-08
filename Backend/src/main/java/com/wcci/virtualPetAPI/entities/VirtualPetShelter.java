@@ -7,8 +7,8 @@ import java.util.Map.Entry;
 
 public class VirtualPetShelter {
 
-    Map<String, VirtualOrganicPet> myOrganicShelter = new HashMap<>();
-    Map<String, VirtualRoboticPet> myRoboticShelter = new HashMap<>();
+    final Map<String, VirtualOrganicPet> myOrganicShelter = new HashMap<>();
+    final Map<String, VirtualRoboticPet> myRoboticShelter = new HashMap<>();
 
 
 //    Map<String, VirtualPet> myShelter = new HashMap<>();
@@ -85,7 +85,7 @@ public class VirtualPetShelter {
                     + "\t| Type: " + entry.getValue().getRoboticPetName()
                     + "\t| Health: " + entry.getValue().getRoboticPetHealth()
                     + "\t| Happiness: " + entry.getValue().happiness()
-                    + "\t| Oil Level: " + entry.getValue().oil()
+                    + "\t| Oil Level: " + entry.getValue().getOil()
                     + "\t| Maintenance Level: " + entry.getValue().batteryLife()
 
             );
@@ -158,7 +158,7 @@ public class VirtualPetShelter {
 //        for (VirtualPet pet : availablePets()) {
 //            if (pet instanceof RoboticPet) {
 //                RoboticPet roboticPet = (RoboticPet) pet;
-//                roboticPet.oil();
+//                roboticPet.getOil();
 //            }
 //        }
 //    }

@@ -42,15 +42,9 @@ public class OrganicCat extends VirtualOrganicPet implements OrganicPet {
         happiness += 5;
         health += 5;
         hunger -=5;
+        thirst -=5;
     }
 
-    public void water() {
-        setThirst(getThirst() + 5);
-    }
-
-    private void setThirst(int i) {
-
-    }
 
     public void emptyLitterBox() {
         happiness += 5;
@@ -59,13 +53,7 @@ public class OrganicCat extends VirtualOrganicPet implements OrganicPet {
         hunger -=5;
     }
 
-    public int getWaste() {
-        return waste;
-    }
 
-    public int getThirst() {
-        return thirst;
-    }
 
 
     public int getHunger() {

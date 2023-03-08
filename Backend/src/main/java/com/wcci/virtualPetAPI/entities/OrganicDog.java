@@ -34,11 +34,10 @@ public class OrganicDog extends VirtualOrganicPet implements OrganicPet {
     public void thirst() {
         happiness += 5;
         health += 5;
-        hunger -=5;}
-
-    public void water() {
-        setThirst(getThirst() - 5);
+        hunger -=5;
+        thirst -=5;
     }
+
 
     public void walk() {
         super.walk();
