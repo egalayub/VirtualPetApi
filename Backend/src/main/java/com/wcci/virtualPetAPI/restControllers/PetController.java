@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.PublicKey;
 
 @RestController
-public class PetController {
+public class cdPetController {
     final private PetRepository petRepository;
 
     public PetController (final @Autowired PetRepository petRepository){

@@ -31,8 +31,13 @@ public class VirtualRoboticPet extends VirtualPet {
         return happiness;
     }
 
-    public int oil() {
+    public int getOil() {
         return oil;
+    }
+
+    public int setOil(){
+
+        return 0;
     }
 
     public int getRoboticPetHealth(){
@@ -47,7 +52,7 @@ public class VirtualRoboticPet extends VirtualPet {
         happiness += 10;
 
         if(oil<= 20){
-            System.out.println("Please oil Robotic Pet before Health declines");
+            System.out.println("Please getOil Robotic Pet before Health declines");
         }
     }
 

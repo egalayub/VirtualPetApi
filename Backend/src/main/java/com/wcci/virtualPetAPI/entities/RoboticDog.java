@@ -2,7 +2,11 @@ package com.wcci.virtualPetAPI.entities;
 
 import com.wcci.virtualPetAPI.repositories.RoboticPet;
 
+import javax.persistence.Entity;
+
+@Entity
 public class RoboticDog extends VirtualRoboticPet implements RoboticPet {
+
 
     protected int batteryLife;
     protected int oil;
@@ -21,7 +25,12 @@ public class RoboticDog extends VirtualRoboticPet implements RoboticPet {
 
     }
 
+    @Override
     public int oil() {
+        return 0;
+    }
+
+    public int getOil() {
        return oil;
     }
 
