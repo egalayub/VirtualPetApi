@@ -1,5 +1,7 @@
 package com.wcci.virtualPetAPI.entities;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.persistence.Entity;
 import java.util.Collection;
 import java.util.HashMap;
@@ -122,6 +124,8 @@ public class VirtualPetShelter {
         }
 
     }
+
+
 
 //    public void feedPets() {
 //        for (VirtualPet pet : availablePets()) {
