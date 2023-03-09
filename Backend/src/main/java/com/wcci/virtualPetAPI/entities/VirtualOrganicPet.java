@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 
-public class VirtualOrganicPet extends VirtualPet implements OrganicPetRepository {
+public class VirtualOrganicPet extends VirtualPet implements OrganicPet{
 
 
     @Id
@@ -21,6 +21,10 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPetRepositor
 
     @ManyToOne
     public VirtualPetShelter shelter;
+
+    public VirtualOrganicPet() {
+        super();
+    }
 
     public VirtualOrganicPet(String name, int happiness, int health, int hunger, int thirst, int waste)/*, int oilLevel, int maintenanceLevel)*/ {
         super(name, happiness, health);

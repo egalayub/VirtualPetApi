@@ -4,7 +4,7 @@ import com.wcci.virtualPetAPI.repositories.RoboticPetRepository;
 import javax.persistence.*;
 
 @Entity
-public class RoboticCat extends VirtualRoboticPet implements RoboticPetRepository {
+public class RoboticCat extends VirtualRoboticPet implements RoboticPet{
 
     @Id
     @GeneratedValue
@@ -13,6 +13,10 @@ public class RoboticCat extends VirtualRoboticPet implements RoboticPetRepositor
 
     @OneToMany(mappedBy = "pets")
     public VirtualPetShelter shelter;
+
+    public RoboticCat() {
+        super();
+    }
 
     public RoboticCat(String name, int happiness, int health, int oil, int batteryLife) {
         super(name, happiness, health, oil, batteryLife);

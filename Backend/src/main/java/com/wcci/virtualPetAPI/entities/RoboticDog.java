@@ -1,10 +1,12 @@
 package com.wcci.virtualPetAPI.entities;
 
-import com.wcci.virtualPetAPI.repositories.RoboticPetRepository;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class RoboticDog extends VirtualRoboticPet implements RoboticPetRepository {
+public class RoboticDog extends VirtualRoboticPet implements RoboticPet{
 
     @Id
     @GeneratedValue
@@ -14,6 +16,10 @@ public class RoboticDog extends VirtualRoboticPet implements RoboticPetRepositor
 
     @OneToMany(mappedBy = "pets")
     public VirtualPetShelter shelter;
+
+    public RoboticDog() {
+        super();
+    }
 
     public RoboticDog(String name, int happiness, int health, int oil, int batteryLife) {
         super(name, happiness, health, oil, batteryLife);

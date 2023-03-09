@@ -4,7 +4,7 @@ import com.wcci.virtualPetAPI.repositories.OrganicPetRepository;
 import javax.persistence.*;
 
 @Entity
-public class OrganicCat extends VirtualOrganicPet implements OrganicPetRepository {
+public class OrganicCat extends VirtualOrganicPet implements OrganicPet{
 
     @Id
     @GeneratedValue
@@ -15,6 +15,9 @@ public class OrganicCat extends VirtualOrganicPet implements OrganicPetRepositor
     @OneToMany(mappedBy = "pets")
     public VirtualPetShelter shelter;
 
+
+    public OrganicCat() {
+    }
 
     public OrganicCat(String name, int happiness, int hunger, int health, int thirst, int waste) {
         super(name, happiness, health, hunger, thirst, waste);
