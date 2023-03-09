@@ -1,7 +1,5 @@
 package com.wcci.virtualPetAPI.entities;
 
-import com.wcci.virtualPetAPI.repositories.OrganicPet;
-
 import javax.persistence.*;
 
 @Entity

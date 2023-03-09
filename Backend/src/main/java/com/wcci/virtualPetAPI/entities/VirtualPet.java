@@ -78,7 +78,7 @@ public class VirtualPet {
     }
 
 
-    public void tick() {
+        public void tick() {
         happiness -= 5;
         health -= 5;
 

@@ -1,9 +1,6 @@
 package com.wcci.virtualPetAPI.entities;
 
-import com.wcci.virtualPetAPI.repositories.RoboticPet;
-
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class RoboticDog extends VirtualRoboticPet implements RoboticPet {

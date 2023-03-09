@@ -1,8 +1,8 @@
-package com.wcci.virtualPetAPI.repositories;
+package com.wcci.virtualPetAPI.entities;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface OrganicPet extends CrudRepository<OrganicPet,String> {
+public interface OrganicPet  {
     void walk();
 
     void feed();

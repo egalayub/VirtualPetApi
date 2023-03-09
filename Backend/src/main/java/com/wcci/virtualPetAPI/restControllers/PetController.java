@@ -1,7 +1,6 @@
 package com.wcci.virtualPetAPI.restControllers;
 
-import com.wcci.virtualPetAPI.entities.RoboticDog;
-import com.wcci.virtualPetAPI.entities.VirtualPet;
+import com.wcci.virtualPetAPI.entities.*;
 import com.wcci.virtualPetAPI.repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,35 +13,45 @@ import java.util.Optional;
 public class PetController {
     final private PetRepository petRepository;
 
-    public PetController (final @Autowired PetRepository petRepository){
+    public PetController(final @Autowired PetRepository petRepository) {
         this.petRepository = petRepository;
     }
-    @GetMapping ("/pets")
-    public Iterable<VirtualPet> getAllPets (){
+
+    @GetMapping("/pets")
+    public Iterable<VirtualPet> getAllPets() {
         return petRepository.findAll();
     }
-    @GetMapping ("/pets/{petId}")
-    public VirtualPet getSinglePet (@PathVariable String petId){
+
+    @GetMapping("/pets/{petId}")
+    public VirtualPet getSinglePet(@PathVariable String petId) {
         return petRepository.findById(petId).get();
     }
+
     @DeleteMapping("pets/{petId}")
-    public void adoptPet (@PathVariable String petId){
+    public void adoptPet(@PathVariable String petId) {
         Optional<VirtualPet> optionalVirtualPet = petRepository.findById(petId);
-optionalVirtualPet .ifPresentOrElse((VirtualPet) -> {
-    petRepository.delete(VirtualPet);
-        },
-        () -> {
-    throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Cannot Adopt non existing pet" + petId);
-        });
-    }
-    @PostMapping ("pets/{petId}")
-    public void admitPet (@PathVariable String petId, @RequestBody RoboticDog admitPet){
-      admitPet.getRoboticPetName();
-      admitPet.getHappiness();
-      admitPet.getHealth();
-      admitPet.oil();
-      admitPet.batteryLife();
-      petRepository.save(admitPet);
+        optionalVirtualPet.ifPresentOrElse((VirtualPet) -> {
+                    petRepository.delete(VirtualPet);
+                },
+                () -> {
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cannot Adopt non existing pet" + petId);
+                });
     }
 
+    @PostMapping("/pets")
+    public void admitPet(@RequestBody OrganicDog admitPet) {
+        admitPet.getName();
+        admitPet.getHappiness();
+        admitPet.getHealth();
+        admitPet.getThirst();
+        admitPet.getWaste();
+        petRepository.save(admitPet);
+    }
+
+    @PostMapping("/pets/{petId}/feed")
+    public void feedOrganicDog(@PathVariable String petId) {
+      VirtualPet organicDog= petRepository.findById(petId).get();
+      organicDog.feed();
+      petRepository.save(organicDog);
+    }
 }

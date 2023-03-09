@@ -1,12 +1,12 @@
 package com.wcci.virtualPetAPI.entities;
 
-import com.wcci.virtualPetAPI.repositories.OrganicPet;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonGetter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
 @Entity
 
 public class VirtualOrganicPet extends VirtualPet implements OrganicPet {
@@ -43,6 +43,9 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPet {
     public int getWasteLevel() {
         int petWaste = 20;
         return petWaste;
+    }
+    public Long getId (){
+        return id;
     }
 
 
