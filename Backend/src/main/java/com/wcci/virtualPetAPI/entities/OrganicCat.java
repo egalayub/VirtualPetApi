@@ -2,9 +2,19 @@ package com.wcci.virtualPetAPI.entities;
 
 import com.wcci.virtualPetAPI.repositories.OrganicPet;
 
+import javax.persistence.*;
+
+@Entity
 public class OrganicCat extends VirtualOrganicPet implements OrganicPet {
+
+    @Id
+    @GeneratedValue
+    private Long id;
     protected int hunger;
     protected int waste;
+
+    @OneToMany(mappedBy = "/pets")
+    public VirtualPetShelter shelter;
 
 
     public OrganicCat(String name, int happiness, int hunger, int health, int thirst, int waste) {

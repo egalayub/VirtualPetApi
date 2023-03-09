@@ -1,6 +1,8 @@
 package com.wcci.virtualPetAPI.repositories;
 
-public interface RoboticPet {
+import org.springframework.data.repository.CrudRepository;
+
+public interface RoboticPet extends CrudRepository<RoboticPet, String> {
 
     void tick();
 
