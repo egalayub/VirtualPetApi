@@ -11,7 +11,7 @@ public class VirtualPet {
 
     @Id
     @GeneratedValue
-    protected final String name;
+    protected String name;
     protected int happiness;
     protected int health;
 
@@ -19,6 +19,8 @@ public class VirtualPet {
     private VirtualPetShelter shelter;
 
 
+    public VirtualPet() {
+    }
 
     public VirtualPet(String name, int happiness, int health) {
         this.name = name;

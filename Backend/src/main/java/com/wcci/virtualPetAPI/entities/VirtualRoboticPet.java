@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 
-public class VirtualRoboticPet extends VirtualPet {
+public abstract class VirtualRoboticPet extends VirtualPet {
 
 
     @Id
@@ -14,11 +14,15 @@ public class VirtualRoboticPet extends VirtualPet {
     protected int happiness;
     protected int health;
     private int oil;
-    private final int batteryLife;
+    private int batteryLife;
 
     @ManyToOne
     public VirtualPetShelter shelter;
 
+
+    protected VirtualRoboticPet() {
+        super();
+    }
 
     public VirtualRoboticPet(String name, int happiness, int health, int oilLevel, int batteryLife) {
         super(name, happiness, health);

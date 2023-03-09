@@ -1,15 +1,16 @@
 package com.wcci.virtualPetAPI.entities;
 
+import com.wcci.virtualPetAPI.repositories.OrganicPetRepository;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonGetter;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 @Entity
 
-public class VirtualOrganicPet extends VirtualPet implements OrganicPet {
+public class VirtualOrganicPet extends VirtualPet implements OrganicPet{
 
 
     @Id
@@ -20,6 +21,10 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPet {
 
     @ManyToOne
     public VirtualPetShelter shelter;
+
+    public VirtualOrganicPet() {
+        super();
+    }
 
     public VirtualOrganicPet(String name, int happiness, int health, int hunger, int thirst, int waste)/*, int oilLevel, int maintenanceLevel)*/ {
         super(name, happiness, health);
