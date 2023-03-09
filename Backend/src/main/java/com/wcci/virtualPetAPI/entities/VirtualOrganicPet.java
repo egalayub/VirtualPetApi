@@ -1,6 +1,6 @@
 package com.wcci.virtualPetAPI.entities;
 
-import com.wcci.virtualPetAPI.repositories.OrganicPet;
+import com.wcci.virtualPetAPI.repositories.OrganicPetRepository;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 
-public class VirtualOrganicPet extends VirtualPet implements OrganicPet {
+public class VirtualOrganicPet extends VirtualPet implements OrganicPetRepository {
 
 
     @Id

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 
-public class VirtualRoboticPet extends VirtualPet {
+public abstract class VirtualRoboticPet extends VirtualPet {
 
 
     @Id

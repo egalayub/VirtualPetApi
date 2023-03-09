@@ -1,11 +1,11 @@
 package com.wcci.virtualPetAPI.entities;
 
-import com.wcci.virtualPetAPI.repositories.OrganicPet;
+import com.wcci.virtualPetAPI.repositories.OrganicPetRepository;
 
 import javax.persistence.*;
 
 @Entity
-public class OrganicCat extends VirtualOrganicPet implements OrganicPet {
+public class OrganicCat extends VirtualOrganicPet implements OrganicPetRepository {
 
     @Id
     @GeneratedValue
@@ -13,7 +13,7 @@ public class OrganicCat extends VirtualOrganicPet implements OrganicPet {
     protected int hunger;
     protected int waste;
 
-    @OneToMany(mappedBy = "/pets")
+    @OneToMany(mappedBy = "pets")
     public VirtualPetShelter shelter;
 
 

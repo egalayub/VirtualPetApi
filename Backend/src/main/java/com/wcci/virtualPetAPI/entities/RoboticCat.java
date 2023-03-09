@@ -1,18 +1,18 @@
 package com.wcci.virtualPetAPI.entities;
 
-import com.wcci.virtualPetAPI.repositories.RoboticPet;
+import com.wcci.virtualPetAPI.repositories.RoboticPetRepository;
 
 import javax.persistence.*;
 
 @Entity
-public class RoboticCat extends VirtualRoboticPet implements RoboticPet {
+public class RoboticCat extends VirtualRoboticPet implements RoboticPetRepository {
 
     @Id
     @GeneratedValue
     private Long id;
     protected int batteryLife;
 
-    @OneToMany(mappedBy = "/pets")
+    @OneToMany(mappedBy = "pets")
     public VirtualPetShelter shelter;
 
     public RoboticCat(String name, int happiness, int health, int oil, int batteryLife) {
