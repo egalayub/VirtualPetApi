@@ -54,4 +54,10 @@ public class PetController {
       organicDog.feed();
       petRepository.save(organicDog);
     }
+    @PostMapping ("/pets/{petId}/play")
+    public void playWithOrganicDog (@PathVariable String petId){
+        VirtualPet organicDog = petRepository.findById(petId).get();
+        organicDog.play();
+        petRepository.save(organicDog);
+    }
 }
