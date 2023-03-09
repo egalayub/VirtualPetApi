@@ -11,18 +11,17 @@ public class VirtualRoboticPet extends VirtualPet {
     @GeneratedValue
     private Long id;
     protected String name;
-   protected int happiness;
-   protected int health;
-   private int oil;
-   private final int batteryLife;
+    protected int happiness;
+    protected int health;
+    private int oil;
+    private final int batteryLife;
 
-    @OneToMany
-    public VirtualPet virtualPet;
+    @ManyToOne
+    public VirtualPetShelter shelter;
 
 
-
-    public VirtualRoboticPet(String name, int happiness, int health, int oilLevel, int batteryLife){
-        super(name,happiness, health);
+    public VirtualRoboticPet(String name, int happiness, int health, int oilLevel, int batteryLife) {
+        super(name, happiness, health);
         this.name = name;
         this.happiness = happiness;
         this.health = health;
@@ -31,15 +30,15 @@ public class VirtualRoboticPet extends VirtualPet {
     }
 
     // Getters
-    public String name(){
+    public String name() {
         return name;
     }
 
-    public String getRoboticPetName(){
+    public String getRoboticPetName() {
         return name;
     }
 
-    public int happiness(){
+    public int happiness() {
         return happiness;
     }
 
@@ -47,12 +46,12 @@ public class VirtualRoboticPet extends VirtualPet {
         return oil;
     }
 
-    public int setOil(){
+    public int setOil() {
 
         return 0;
     }
 
-    public int getRoboticPetHealth(){
+    public int getRoboticPetHealth() {
         return health;
     }
 
@@ -60,22 +59,20 @@ public class VirtualRoboticPet extends VirtualPet {
         return batteryLife;
     }
 
-    public void play(){
+    public void play() {
         happiness += 10;
 
-        if(oil<= 20){
+        if (oil <= 20) {
             System.out.println("Please getOil Robotic Pet before Health declines");
         }
     }
 
-    public void tick(){
+    public void tick() {
         happiness -= 20;
         health -= 10;
-        
+
 
     }
-
-
 
 
 }

@@ -19,7 +19,7 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPet {
     protected int thirst;
 
     @ManyToOne
-    public VirtualPet virtualPet;
+    public VirtualPetShelter shelter;
 
     public VirtualOrganicPet(String name, int happiness, int health, int hunger, int thirst, int waste)/*, int oilLevel, int maintenanceLevel)*/ {
         super(name, happiness, health);
@@ -36,7 +36,6 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPet {
     public String getOrganicPetName() {
         return name;
     }
-
     public int getPetThirst() {
         return thirst;
     }

@@ -2,10 +2,7 @@ package com.wcci.virtualPetAPI.entities;
 
 import com.wcci.virtualPetAPI.repositories.OrganicPet;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class OrganicDog extends VirtualOrganicPet implements OrganicPet {
@@ -17,8 +14,8 @@ public class OrganicDog extends VirtualOrganicPet implements OrganicPet {
    protected int thirst;
    protected int waste;
 
-    @ManyToOne
-    public VirtualPet virtualPet;
+    @OneToMany(mappedBy = "/pets")
+    public VirtualPetShelter shelter;
 
     public OrganicDog(String name, int happiness, int health, int hunger, int thirst, int waste) {
         super(name, happiness, health, hunger, thirst, waste);

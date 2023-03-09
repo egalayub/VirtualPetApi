@@ -14,8 +14,8 @@ public class RoboticDog extends VirtualRoboticPet implements RoboticPet {
     protected int batteryLife;
     protected int oil;
 
-    @ManyToOne
-    public VirtualPet virtualPet;
+    @OneToMany(mappedBy = "/pets")
+    public VirtualPetShelter shelter;
 
     public RoboticDog(String name, int happiness, int health, int oil, int batteryLife) {
         super(name, happiness, health, oil, batteryLife);
@@ -36,6 +36,7 @@ public class RoboticDog extends VirtualRoboticPet implements RoboticPet {
         return 0;
     }
 
+    @Override
     public int getOil() {
        return oil;
     }

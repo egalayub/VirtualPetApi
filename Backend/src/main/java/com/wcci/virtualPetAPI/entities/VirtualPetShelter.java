@@ -56,11 +56,11 @@ public class VirtualPetShelter {
 
     ///////
 
-    public Collection<VirtualRoboticPet> availableRoboticPets() {
+    public Collection<VirtualRoboticPet> roboticPets() {
         return myRoboticShelter.values();
     }
 
-    public Collection<VirtualOrganicPet> availableOrganicPets() {
+    public Collection<VirtualOrganicPet> OrganicPets() {
         return myOrganicShelter.values();
     }
 

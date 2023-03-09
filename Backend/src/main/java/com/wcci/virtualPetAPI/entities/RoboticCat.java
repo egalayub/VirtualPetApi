@@ -2,10 +2,7 @@ package com.wcci.virtualPetAPI.entities;
 
 import com.wcci.virtualPetAPI.repositories.RoboticPet;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class RoboticCat extends VirtualRoboticPet implements RoboticPet {
@@ -15,8 +12,8 @@ public class RoboticCat extends VirtualRoboticPet implements RoboticPet {
     private Long id;
     protected int batteryLife;
 
-    @ManyToOne
-    public VirtualPet virtualPet;
+    @OneToMany(mappedBy = "/pets")
+    public VirtualPetShelter shelter;
 
     public RoboticCat(String name, int happiness, int health, int oil, int batteryLife) {
         super(name, happiness, health, oil, batteryLife);
@@ -24,8 +21,7 @@ public class RoboticCat extends VirtualRoboticPet implements RoboticPet {
 
     }
 
-
-
+    @Override
     public int batteryLife() {
 
         return batteryLife;

@@ -1,6 +1,9 @@
 package com.wcci.virtualPetAPI.entities;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Map;
 
 @Entity
@@ -12,8 +15,8 @@ public class VirtualPet {
     protected int happiness;
     protected int health;
 
-    @OneToMany(mappedBy = "/pets")
-    private VirtualPet virtualPet;
+    @ManyToOne
+    private VirtualPetShelter shelter;
 
 
 
