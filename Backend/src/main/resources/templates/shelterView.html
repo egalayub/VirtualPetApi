@@ -16,9 +16,9 @@
 <h1>Java Junkie Pet Shelter </h1>
 
 <div class="topnav">
-    <a href="#Home">Home</a>
-    <a href="#Adopt">Adopt</a>
-    <a href="#PetView">Pet View</a>
+    <a href="#Home">Home <span th:text="${home}"></span> </a>
+    <a href="#Adopt">Adopt <span th:href="@{/adopt/{name}(id=${name})}"></span> </a>
+    <a href="PetView.html">PetView</a>
 </div>
 
 
@@ -29,10 +29,12 @@
 
 <div class="cats-and-dogs" id="cats-and-dogs">
     <section id="dogs"> <br>Available Dogs</br>
-    <br>Name</br>
-    <br>Energy levels</br>
-    <br>Hunger</br>
-    <br> <button type="button">Adopt</button></br>
+
+    <br>Name <span th:text="${name}"></span> </br>
+    <br>Energy levels <span th:text="${energy levels}"></span> </br>
+    <br>Hunger <span th:text="${hunger}"></span> </br>
+    <br> <button type="button">Adopt</button> <span th:href="@{/adopt/{name}(id=${name})}"></span> </br>
+
     </section>
 
 <!--    <section id="cats"> <br>Available Cats</br>-->
