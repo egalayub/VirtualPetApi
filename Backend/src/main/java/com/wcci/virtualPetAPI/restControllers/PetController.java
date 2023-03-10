@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.Id;
 import java.util.Optional;
 
 @RestController
@@ -27,7 +28,7 @@ public class PetController {
         return petRepository.findById(petId).get();
     }
 
-    @DeleteMapping("pets/{petId}")
+    @DeleteMapping("/pets/{petId}")
     public void adoptPet(@PathVariable String petId) {
         Optional<VirtualPet> optionalVirtualPet = petRepository.findById(petId);
         optionalVirtualPet.ifPresentOrElse((VirtualPet) -> {
@@ -58,6 +59,22 @@ public class PetController {
     public void playWithOrganicDog (@PathVariable String petId){
         VirtualPet organicDog = petRepository.findById(petId).get();
         organicDog.play();
+        petRepository.save(organicDog);
+    }
+    @GetMapping ("/pets/{petId}/walk")
+    public void WalkOrganicDog(@PathVariable String petId){
+        OrganicDog organicDog = (OrganicDog) petRepository.findById(petId).get();
+        organicDog.walk();
+        petRepository.save(organicDog);
+    }
+    @GetMapping ("/pets/{petId}/stats")
+    public void getOrganicDogStats (@PathVariable String petId){
+        OrganicDog organicDog = (OrganicDog) petRepository.findById(petId).get();
+        organicDog.getName();
+        organicDog.getHappiness();
+        organicDog.getHealth();
+        organicDog.getWaste();
+        organicDog.getHunger();
         petRepository.save(organicDog);
     }
 }
