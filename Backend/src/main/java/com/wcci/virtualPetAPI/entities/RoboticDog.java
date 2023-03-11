@@ -8,9 +8,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class RoboticDog extends VirtualRoboticPet implements RoboticPet{
 
-    @Id
-    @GeneratedValue
-    private Long id;
     protected int batteryLife;
     protected int oil;
 

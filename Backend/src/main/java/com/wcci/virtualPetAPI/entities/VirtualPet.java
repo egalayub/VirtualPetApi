@@ -1,16 +1,16 @@
 package com.wcci.virtualPetAPI.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Map;
 
 @Entity
-public class VirtualPet {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+abstract public class VirtualPet {
 
     @Id
     @GeneratedValue
+    private Long id;
+
     protected String name;
     protected int happiness;
     protected int health;
@@ -91,10 +91,6 @@ public class VirtualPet {
         health -= 5;
 
 
-    }
-
-    public Map.Entry<String, VirtualPet>[] entrySet() {
-        return new Map.Entry[0];
     }
 }
 
