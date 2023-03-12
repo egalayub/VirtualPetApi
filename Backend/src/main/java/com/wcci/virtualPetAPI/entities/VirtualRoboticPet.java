@@ -71,6 +71,7 @@ public abstract class VirtualRoboticPet extends VirtualPet {
         }
     }
 
+
     public void tick() {
         happiness -= 20;
         health -= 10;

@@ -6,5 +6,5 @@ public interface OrganicPet  {
     void feed();
     void thirst();
 
-
+    void play();
 }

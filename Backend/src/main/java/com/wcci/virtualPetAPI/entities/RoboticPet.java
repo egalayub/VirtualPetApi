@@ -6,4 +6,6 @@ public interface RoboticPet  {
     void tick();
 
     int oil();
+    void play();
+    void walk();
 }
