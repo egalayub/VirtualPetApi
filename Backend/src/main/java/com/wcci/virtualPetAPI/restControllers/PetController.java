@@ -11,9 +11,11 @@ import java.util.Optional;
 
 @RestController
 public class PetController {
-    final private PetRepository petRepository;
+    // Define petRepository with VirtualPet
+    final private PetRepository<VirtualPet> petRepository;
 
-    public PetController(final @Autowired PetRepository petRepository) {
+    // Use the generic VirtualPet in the constructor
+    public PetController(final @Autowired PetRepository<VirtualPet> petRepository) {
         this.petRepository = petRepository;
     }
 
@@ -49,31 +51,53 @@ public class PetController {
     }
 
     @PostMapping("/pets/{petId}/feed")
-    public void feedOrganicDog(@PathVariable String petId) {
-      VirtualPet organicDog= petRepository.findById(petId).get();
-      organicDog.feed();
-      petRepository.save(organicDog);
+    public void feedPet(@PathVariable String petId) {
+        // Retrieve the pet from the repository
+        VirtualPet pet = petRepository.findById(petId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pet not found"));
+
+        // Check the actual type of the pet with instanceof
+        if (pet instanceof OrganicPet) {
+            ((OrganicPet) pet).feed();
+        } else {
+            // Throw an exception for unsupported pet types
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unsupported pet type");
+        }
+
+        // Save the pet back to the repository
+        petRepository.save(pet);
     }
-    @PostMapping ("/pets/{petId}/play")
-    public void playWithOrganicDog (@PathVariable String petId){
-        VirtualPet organicDog = petRepository.findById(petId).get();
-        organicDog.play();
-        petRepository.save(organicDog);
+
+    @PostMapping("/pets/{petId}/play")
+    public void playWithPet(@PathVariable String petId) {
+        VirtualPet pet = petRepository.findById(petId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pet not found"));
+        if (pet instanceof OrganicPet) {
+            ((OrganicPet) pet).play();
+        } else if (pet instanceof RoboticPet) {
+            ((RoboticPet) pet).play();
+        } else {
+
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unsupported pet type");
+        }
+
+        petRepository.save(pet);
     }
-    @GetMapping ("/pets/{petId}/walk")
-    public void WalkOrganicDog(@PathVariable String petId){
-        OrganicDog organicDog = (OrganicDog) petRepository.findById(petId).get();
-        organicDog.walk();
-        petRepository.save(organicDog);
-    }
-    @GetMapping ("/pets/{petId}/stats")
-    public void getOrganicDogStats (@PathVariable String petId){
-        OrganicDog organicDog = (OrganicDog) petRepository.findById(petId).get();
-        organicDog.getPetName();
-        organicDog.getHappiness();
-        organicDog.getHealth();
-        organicDog.getWaste();
-        organicDog.getHunger();
-        petRepository.save(organicDog);
+
+    @PostMapping("/pets/{petId}/walk")
+    public void walkPet(@PathVariable String petId) {
+        VirtualPet pet = petRepository.findById(petId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pet not found"));
+        if (pet instanceof OrganicPet) {
+            ((OrganicPet) pet).walk();
+        } else if (pet instanceof RoboticPet) {
+            ((RoboticPet) pet).walk();
+        } else {
+
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unsupported pet type");
+        }
+
+        petRepository.save(pet);
+
     }
 }
