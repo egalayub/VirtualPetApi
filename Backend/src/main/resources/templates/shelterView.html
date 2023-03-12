@@ -17,8 +17,8 @@
 
 <div class="topnav">
     <a href="#Home">Home <span th:text="${home}"></span> </a>
-    <a href="#Adopt">Adopt <span th:href="@{/adopt/{name}(id=${name})}"></span> </a>
-    <a href="PetView.html">PetView</a>
+    <a href="PetView.html">View Pets</a>
+    <a href="#Shelters">Shelters <span th:text="${shelter}"></span> </a>
 </div>
 
 
@@ -26,23 +26,60 @@
 <img id="pet" src="https://media.istockphoto.com/id/1411763501/photo/banner-head-pets-cat-and-dog-hiding-isolated-on-blue-pastel-background.jpg?b=1&s=170667a&w=0&k=20&c=NhPsKS2YepUhbOxThF4ks7YsQ3HMrvEKQ444wAfRCyw=">
 
 
-
-<div class="cats-and-dogs" id="cats-and-dogs">
-    <section id="dogs"> <br>Available Dogs</br>
-
-    <br>Name <span th:text="${name}"></span> </br>
-    <br>Energy levels <span th:text="${energy levels}"></span> </br>
-    <br>Hunger <span th:text="${hunger}"></span> </br>
-    <br> <button type="button">Adopt</button> <span th:href="@{/adopt/{name}(id=${name})}"></span> </br>
-
+<div class="cats-and-dogs" id="pets">
+    <section id="cats-and-dogs">
+        <table>
+            Pets
+            <tr>
+                <td>Type <span th:text="${type}"></span></td>
+                <td>Name <span th:text="${name}"></span> </td>
+                <td>Happiness <span th:text="${happiness}"> </span></td>
+                <td>Health <span th:text="${health}"> </span> </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Organic dog</td>
+                <td>dog1</td>
+                <td>5</td>
+                <td>5</td>
+                <td><button type="button">Adopt</button></td>
+            </tr>
+            <tr>
+                <td>Organic cat</td>
+                <td>cat1</td>
+                <td>5</td>
+                <td>5</td>
+                <td><button type="button">Adopt</button></td>
+            </tr>
+            <tr>
+                <td>Robotic dog</td>
+                <td>dog2</td>
+                <td>2</td>
+                <td>2</td>
+                <td><button type="button">Adopt</button></td>
+            </tr>
+            <tr>
+                <td>Robotic cat</td>
+                <td>cat2</td>
+                <td>2</td>
+                <td>2</td>
+                <td><button type="button">Adopt</button></td>
+            </tr>
+        </table>
     </section>
+<!--<div class="cats-and-dogs" id="cats-and-dogs">-->
+<!--    <section id="dogs"> <br>Available Dogs</br>-->
 
-<!--    <section id="cats"> <br>Available Cats</br>-->
-<!--        <br>Name</br>-->
-<!--        <br>Energy levels</br>-->
-<!--        <br>Hunger</br>-->
-<!--        <br> <button type="button">Adopt</button> </br>-->
+<!--    <br>Name <span th:text="${name}"></span> </br>-->
+<!--    <br>Energy levels <span th:text="${energy levels}"></span> </br>-->
+<!--    <br>Hunger <span th:text="${hunger}"></span> </br>-->
+<!--    <br> <button type="button">Adopt</button> <span th:href="@{/adopt/{name}(id=${name})}"></span> </br>-->
+
 <!--    </section>-->
+
+
+
+
 </div>
 
 </body>

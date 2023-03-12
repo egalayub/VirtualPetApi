@@ -48,16 +48,16 @@ public class ShelterControllerTest {
         final VirtualPetShelter shelter1 = new VirtualPetShelter();
         final VirtualPetShelter shelter2 = new VirtualPetShelter();
 
-        mvc.perform(MockMvcRequestBuilders.post("/shelters"));
+        mvc.perform(MockMvcRequestBuilders.post("/shelters")
                     .accept(MediaType.APPLICATION_JSON)
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(getJsonContent(shelter1))
+                    .content(getJsonContent(shelter1)))
                 .andExpect(status().isOk());
 
-        mvc.perform(MockMvcRequestBuilders.post("/shelters"));
+        mvc.perform(MockMvcRequestBuilders.post("/shelters")
                     .accept(MediaType.APPLICATION_JSON)
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(getJsonContent(shelter2))
+                    .content(getJsonContent(shelter2)))
                 .andExpect(status().isOk());
 
         mvc.perform(MockMvcRequestBuilders.get("/shelters").accept(MediaType.APPLICATION_JSON))
