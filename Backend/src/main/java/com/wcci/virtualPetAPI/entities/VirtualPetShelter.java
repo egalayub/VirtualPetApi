@@ -1,13 +1,12 @@
 package com.wcci.virtualPetAPI.entities;
 
-import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.*;
-import java.util.Map.Entry;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -30,7 +29,7 @@ public class VirtualPetShelter {
 //    }
 ////
 ////    public void addPet(VirtualPet adoptablePet) {
-////        String petsAvailable = adoptablePet.getName();
+////        String petsAvailable = adoptablePet.getPetName();
 ////        myShelter.put(petsAvailable, adoptablePet);
 ////    }
 ////
@@ -41,7 +40,10 @@ public class VirtualPetShelter {
 
 
     //////
+public void addPet(VirtualPet virtualPet) {
+    virtualPet.put(virtualPet.getPetName(), virtualPet);
 
+}
 
     public void addRoboticPet(VirtualRoboticPet adoptablePet) {
         String name = adoptablePet.getRoboticPetName();
@@ -54,7 +56,7 @@ public class VirtualPetShelter {
 
 
     public void addOrganicPet(VirtualOrganicPet adoptablePet) {
-        String name = adoptablePet.getOrganicPetName();
+        String name = adoptablePet.getPetName();
         myOrganicShelter.add(adoptablePet);
     }
 
@@ -76,12 +78,12 @@ public class VirtualPetShelter {
 
     public void showOrganicPets() {
         for (VirtualOrganicPet pet : myOrganicShelter) {
-            System.out.println("Name: " + pet.getName()
-                    + "\t| Type: " + pet.getOrganicPetName()
+            System.out.println("Name: " + pet.getPetName()
+                    + "\t| Type: " + pet.getPetName()
                     + "\t| Health: " + pet.getHealth()
                     + "\t| Happiness: " + pet.getHappiness()
-                    + "\t| Hunger: " + pet.getPetHunger()
-                    + "\t| Thirst: " + pet.getPetThirst()
+                    + "\t| Hunger: " + pet.getHunger()
+                    + "\t| Thirst: " + pet.getThirst()
                     + "\t| Waste Level: " + pet.getWasteLevel()
             );
 
@@ -93,7 +95,7 @@ public class VirtualPetShelter {
 
     public void showAllRoboticPets() {
         for (VirtualRoboticPet pet : myRoboticShelter) {
-            System.out.println("Name: " + pet.getName()
+            System.out.println("Name: " + pet.getPetName()
                     + "\t| Type: " + pet.getRoboticPetName()
                     + "\t| Health: " + pet.getRoboticPetHealth()
                     + "\t| Happiness: " + pet.happiness()
@@ -107,13 +109,13 @@ public class VirtualPetShelter {
 
     public void getPetStats(VirtualPet adoptablePet) {
         for (VirtualOrganicPet pet : myOrganicShelter) {
-            System.out.println("Name : " +pet.getName() + "\t| Health " + pet.getHealth()
+            System.out.println("Name : " +pet.getPetName() + "\t| Health " + pet.getHealth()
                     + "\t| Happiness: " + pet.getHappiness());
         }
     }
 
-    public VirtualPet getPetNamed(String name) {
-        return null; // FIXME!!!
+    public String getPetNamed(String petName) {
+        return petName;
     }
 
 
@@ -208,6 +210,7 @@ public class VirtualPetShelter {
 //    }
 
     public void tickAllPets() {
+
     }
 
     public void oilAllRobots() {

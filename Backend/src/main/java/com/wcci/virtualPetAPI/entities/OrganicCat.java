@@ -33,8 +33,8 @@ public class OrganicCat extends VirtualOrganicPet implements OrganicPet{
     public void tick() {
         happiness -= 5;
         health -= 5;
-        thirst +=5;
-        hunger +=10;
+        thirst += 5;
+        hunger += 5;
 
     }
 
@@ -62,7 +62,7 @@ public class OrganicCat extends VirtualOrganicPet implements OrganicPet{
 
 
     public int getHunger() {
-        return hunger = 13;
+        return hunger;
     }
 
     public void setHunger(int hunger) {

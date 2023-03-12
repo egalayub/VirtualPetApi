@@ -50,9 +50,9 @@ public abstract class VirtualRoboticPet extends VirtualPet {
         return oil;
     }
 
-    public int setOil() {
-
-        return 0;
+    public int setOil(int oil) {
+        this.oil = oil;
+        return oil;
     }
 
     public int getRoboticPetHealth() {
@@ -74,6 +74,7 @@ public abstract class VirtualRoboticPet extends VirtualPet {
     public void tick() {
         happiness -= 20;
         health -= 10;
+
 
 
     }

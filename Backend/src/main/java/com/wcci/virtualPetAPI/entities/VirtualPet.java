@@ -1,7 +1,6 @@
 package com.wcci.virtualPetAPI.entities;
 
 import javax.persistence.*;
-import java.util.Map;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -11,7 +10,7 @@ abstract public class VirtualPet {
     @GeneratedValue
     private Long id;
 
-    protected String name;
+    protected String petName;
     protected int happiness;
     protected int health;
 
@@ -22,8 +21,8 @@ abstract public class VirtualPet {
     public VirtualPet() {
     }
 
-    public VirtualPet(String name, int happiness, int health) {
-        this.name = name;
+    public VirtualPet(String petName, int happiness, int health) {
+        this.petName = petName;
         this.happiness = happiness;
         this.health = health;
 
@@ -33,12 +32,12 @@ abstract public class VirtualPet {
 
 
     // Getters
-    public String getName() {
-        return name;
+    public String getPetName() {
+        return petName;
     }
 
-    public String getOrganicPetName() {
-        return name;
+    public void setPetName(String petName) {
+        this.petName = petName;
     }
 
     public int getHappiness() {
@@ -91,6 +90,9 @@ abstract public class VirtualPet {
         health -= 5;
 
 
+    }
+
+    public void put(String petName, VirtualPet virtualPet) {
     }
 }
 

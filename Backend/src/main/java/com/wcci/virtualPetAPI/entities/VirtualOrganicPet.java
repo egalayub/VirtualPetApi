@@ -1,15 +1,13 @@
 package com.wcci.virtualPetAPI.entities;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonGetter;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 @Entity
-
-public class VirtualOrganicPet extends VirtualPet implements OrganicPet{
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class VirtualOrganicPet extends VirtualPet implements OrganicPet{
 
     protected int hunger;
     protected int thirst;
@@ -23,7 +21,6 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPet{
 
     public VirtualOrganicPet(String name, int happiness, int health, int hunger, int thirst, int waste)/*, int oilLevel, int maintenanceLevel)*/ {
         super(name, happiness, health);
-
         this.thirst = thirst;
         this.hunger = hunger;
 
@@ -32,11 +29,7 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPet{
     }
 
     // Getters
-  @Override
-    public String getOrganicPetName() {
-        return name;
-    }
-    public int getPetThirst() {
+    public int getThirst() {
         return thirst;
     }
 
@@ -51,10 +44,12 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPet{
         super.feed();
     }
 
-     @Override
-     public void thirst() {
 
+     public void setThirst(int thirst) {
+        this.thirst = thirst;
      }
+
+
 
 ////    @Override
 ////    public void water() {
@@ -84,7 +79,7 @@ public class VirtualOrganicPet extends VirtualPet implements OrganicPet{
     }
 
 
-    public int getPetHunger() {
+    public int getHunger() {
         return hunger;
     }
 }

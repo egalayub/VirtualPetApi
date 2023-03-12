@@ -136,7 +136,7 @@ public class VirtualPetAmokApplication {
                 case 8 -> {
                     myShelter.tickAllPets();
                     myShelter.showOrganicPets();
-                    myShelter.showAllRoboticPets();;
+                    myShelter.showAllRoboticPets();
                     System.out.println(
                             "Do you have a: \n\t A. Organic Dog \n\t B. Organic Cat \n\t C. Robotic Dog \n\t D. Robotic Cat");
                     String petType = input.nextLine();
@@ -151,21 +151,21 @@ public class VirtualPetAmokApplication {
 
                         // Add organic cat.
                         case "B" -> {
-                            System.out.println("Please name the new cat: ");
+                            System.out.println("Please petName the new cat: ");
                             String organicCatName = input.nextLine();
                             VirtualOrganicPet newOrganicCat = new OrganicCat(organicCatName, 10, 10, 0, 0, 0);
                             myShelter.addOrganicPet(newOrganicCat);
                         }
                         // Add robotic dog.
                         case "C" -> {
-                            System.out.println("Please name the new robotic dog: ");
+                            System.out.println("Please petName the new robotic dog: ");
                             String roboticDogName = input.nextLine();
                             VirtualRoboticPet newRoboticDog = new RoboticDog(roboticDogName, 10, 10, 0, 10);
                             myShelter.addRoboticPet(newRoboticDog);
                         }
                         // Add robotic cat.
                         case "D" -> {
-                            System.out.println("Please name the new robotic cat: ");
+                            System.out.println("Please petName the new robotic cat: ");
                             String roboticCatName = input.nextLine();
                             VirtualRoboticPet newRoboticCat = new RoboticCat(roboticCatName, 10, 10, 10, 10);
                             myShelter.addRoboticPet(newRoboticCat);
@@ -183,8 +183,8 @@ public class VirtualPetAmokApplication {
                     System.out.println("Which pet would you like to play with?");
                     System.out.println();
                     String chosenPet = input.nextLine();
-                    VirtualPet playPet = myShelter.getPetNamed(chosenPet);
-                    playPet.play();
+//                    VirtualPet petPlay = myShelter.getPetNamed(chosenPet);
+//                    petPlay.play();
                     System.out.println(chosenPet + " had a great time!");
                 }
 

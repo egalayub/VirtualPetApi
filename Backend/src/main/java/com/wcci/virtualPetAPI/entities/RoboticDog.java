@@ -1,8 +1,6 @@
 package com.wcci.virtualPetAPI.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -34,7 +32,12 @@ public class RoboticDog extends VirtualRoboticPet implements RoboticPet{
 
     @Override
     public int oil() {
-        return 0;
+        return oil;
+    }
+
+    public int setOil(int oil){
+        this.oil = oil;
+        return oil;
     }
 
     @Override
