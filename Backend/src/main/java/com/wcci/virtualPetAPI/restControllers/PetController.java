@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.Id;
 import java.util.Optional;
 
 @RestController
@@ -41,7 +40,7 @@ public class PetController {
 
     @PostMapping("/pets")
     public void admitPet(@RequestBody OrganicDog admitPet) {
-        admitPet.getName();
+        admitPet.getPetName();
         admitPet.getHappiness();
         admitPet.getHealth();
         admitPet.getThirst();
@@ -70,7 +69,7 @@ public class PetController {
     @GetMapping ("/pets/{petId}/stats")
     public void getOrganicDogStats (@PathVariable String petId){
         OrganicDog organicDog = (OrganicDog) petRepository.findById(petId).get();
-        organicDog.getName();
+        organicDog.getPetName();
         organicDog.getHappiness();
         organicDog.getHealth();
         organicDog.getWaste();

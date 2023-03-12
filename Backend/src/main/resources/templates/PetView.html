@@ -10,15 +10,15 @@
 <!-- Header section -->
 <header>Welcome to the Java Junkie Shelter!</header>
 
-<!-- Pet name section -->
-<h1>Here is <span th:text="${name}"></span></h1>
+<!-- Pet petName section -->
+<h1>Here is <span th:text="${petName}"></span></h1>
 
 <!-- Pet image section -->
 <h3>Look how cute this pet is!</h3>
 <img src="https://www.heart.org/-/media/Healthy-Living-Images/Healthy-Lifestyle/Pets/puppy-kitten-heart.jpg" alt="puppy">
 
 <!-- Pet stats section -->
-<h4>Here are <span th:text="${name}"></span>'s stats</h4>
+<h4>Here are <span th:text="${petName}"></span>'s stats</h4>
 <ul>
     <!-- Pet hunger stat -->
     <li>Hunger: <span th:text="${hunger}"></span></li>
@@ -31,21 +31,21 @@
 </ul>
 
 <!-- Pet actions section -->
-<h5>Here are <span th:text="${name}"></span>'s actions</h5>
+<h5>Here are <span th:text="${petName}"></span>'s actions</h5>
 <ul>
     <!-- Feed action -->
-    <li><a th:href="@{${'/feed/' + name}}">Feed</a></li>
+    <li><a th:href="@{${'/feed/' + petName}}">Feed</a></li>
     <!-- Play action -->
-    <li><a th:href="@{${'/play/' + name}}">Play</a></li>
+    <li><a th:href="@{${'/play/' + petName}}">Play</a></li>
     <!-- Clean action -->
-    <li><a th:href="@{${'/clean/' + name}}">Clean</a></li>
+    <li><a th:href="@{${'/clean/' + petName}}">Clean</a></li>
 </ul>
 
 <!-- Adoption section -->
 <h5>Want to adopt?</h5>
 <ul>
     <!-- Yes adoption option -->
-    <li><a th:href="@{/adopt/{name}(id=${name})}">Yes</a></li>
+    <li><a th:href="@{/adopt/{petName}(id=${petName})}">Yes</a></li>
     <!-- If no, then we will go back to the main page -->
     <li><a href="shelterView.html">No</a></li>
 </ul>

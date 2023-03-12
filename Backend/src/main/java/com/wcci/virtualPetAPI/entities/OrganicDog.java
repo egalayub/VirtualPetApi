@@ -5,9 +5,9 @@ import javax.persistence.*;
 @Entity
 public class OrganicDog extends VirtualOrganicPet implements OrganicPet {
 
-   protected int hunger;
-   protected int thirst;
-   protected int waste;
+    protected int hunger;
+    protected int thirst;
+    protected int waste;
 
     public OrganicDog() {
     }
@@ -22,13 +22,10 @@ public class OrganicDog extends VirtualOrganicPet implements OrganicPet {
 
     @Override
     public void tick() {
-        setHappiness(getHappiness() - 1);
-        setHunger(getHunger() + 1);
-        setThirst(getThirst() + 1);
-        setWaste(getWaste() + 1);
-        if (getHappiness() <= 0 || getHunger() >= 10 || getThirst() >= 10 || getWaste() >= 10) {
-            setHealth(getHealth() - 1);
-        }
+        happiness -= 5;
+        health -= 5;
+        thirst += 5;
+        hunger += 5;
     }
 
     public void feed() {
@@ -39,8 +36,8 @@ public class OrganicDog extends VirtualOrganicPet implements OrganicPet {
     public void thirst() {
         happiness += 5;
         health += 5;
-        hunger -=5;
-        thirst -=5;
+        hunger -= 5;
+        thirst -= 5;
     }
 
 
