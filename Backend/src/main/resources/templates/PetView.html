@@ -5,11 +5,11 @@
     <title>Pet View</title>
     <!-- Include the external stylesheet -->
     <link rel="stylesheet" href="PetViewStyleSheet.css">
+
 </head>
 <body>
-<!-- Header section -->
-<header>Welcome to the Java Junkie Shelter!</header>
-
+<!-- Include the javascript -->
+<script src="backend.js"></script>
 <!-- Pet petName section -->
 <h1>Here is <span th:text="${petName}"></span></h1>
 
@@ -50,10 +50,6 @@
     <li><a href="shelterView.html">No</a></li>
 </ul>
 
-<!-- Dog image section -->
-<div class="dog-container">
-    <!-- Include the dog image -->
-    <img class="dog" src="https://media.tenor.com/YdsMwdIApe4AAAAM/running-dog.gif" alt="dog">
 </div>
 </body>
 </html>
