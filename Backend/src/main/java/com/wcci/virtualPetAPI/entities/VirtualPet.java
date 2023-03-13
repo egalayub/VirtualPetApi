@@ -6,14 +6,12 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 abstract public class VirtualPet {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
     protected String petName;
     protected int happiness;
     protected int health;
-
+    @Id
+    @GeneratedValue
+    private Long id;
     @ManyToOne
     private VirtualPetShelter shelter;
 
@@ -27,11 +25,9 @@ abstract public class VirtualPet {
         this.health = health;
 
 
-
     }
 
 
-    // Getters
     public String getPetName() {
         return petName;
     }
@@ -44,15 +40,13 @@ abstract public class VirtualPet {
         return happiness;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
-
-
     public void setHappiness(int happiness) {
         this.happiness = happiness;
 
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     public void setHealth(int health) {
@@ -64,22 +58,14 @@ abstract public class VirtualPet {
         happiness += 10;
         health += 10;
 
-
-        // add code here
     }
 
     public void feed() {
         happiness += 10;
         health += 10;
-
-
-//        if (petHunger == 20) {
-//            System.out.println("Please feed Pet before Health declines");
-//        }
     }
 
-
-        public void tick() {
+    public void tick() {
         happiness -= 5;
         health -= 5;
 

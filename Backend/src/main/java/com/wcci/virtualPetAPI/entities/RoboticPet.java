@@ -7,5 +7,4 @@ public interface RoboticPet  {
 
     int oil();
     void play();
-    void walk();
 }

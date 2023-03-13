@@ -7,17 +7,16 @@ import javax.persistence.*;
 public abstract class VirtualRoboticPet extends VirtualPet {
 
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    @ManyToOne
+    public VirtualPetShelter shelter;
     protected String name;
     protected int happiness;
     protected int health;
+    @Id
+    @GeneratedValue
+    private Long id;
     private int oil;
     private int batteryLife;
-
-    @ManyToOne
-    public VirtualPetShelter shelter;
 
 
     protected VirtualRoboticPet() {
@@ -33,7 +32,6 @@ public abstract class VirtualRoboticPet extends VirtualPet {
         this.batteryLife = batteryLife;
     }
 
-    // Getters
     public String name() {
         return name;
     }
@@ -75,8 +73,6 @@ public abstract class VirtualRoboticPet extends VirtualPet {
     public void tick() {
         happiness -= 20;
         health -= 10;
-
-
 
     }
 

@@ -4,13 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
-public class RoboticDog extends VirtualRoboticPet implements RoboticPet{
-
-    protected int batteryLife;
-    protected int oil;
+public class RoboticDog extends VirtualRoboticPet implements RoboticPet {
 
     @OneToMany(mappedBy = "pets")
     public VirtualPetShelter shelter;
+    protected int batteryLife;
+    protected int oil;
 
     public RoboticDog() {
         super();
@@ -35,14 +34,14 @@ public class RoboticDog extends VirtualRoboticPet implements RoboticPet{
         return oil;
     }
 
-    public int setOil(int oil){
+    public int setOil(int oil) {
         this.oil = oil;
         return oil;
     }
 
     @Override
     public int getOil() {
-       return oil;
+        return oil;
     }
 
 }

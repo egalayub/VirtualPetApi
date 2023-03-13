@@ -40,7 +40,7 @@ public class OrganicDog extends VirtualOrganicPet implements OrganicPet {
         thirst -= 5;
     }
 
-
+    @Override
     public void walk() {
         super.walk();
         setWaste(getWaste() - 5);
