@@ -12,38 +12,18 @@ import java.util.Set;
 @Entity
 public class VirtualPetShelter {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
     @OneToMany()
     final Set<VirtualOrganicPet> myOrganicShelter = new HashSet<>();
     @OneToMany()
     final Set<VirtualRoboticPet> myRoboticShelter = new HashSet<>();
+    @Id
+    @GeneratedValue
+    private Long id;
 
+    public void addPet(VirtualPet virtualPet) {
+        virtualPet.put(virtualPet.getPetName(), virtualPet);
 
-//    Map<String, VirtualPet> myShelter = new HashMap<>();
-
-//    public Collection<VirtualPet> availablePets() {
-//        return myShelter.values();
-//    }
-////
-////    public void addPet(VirtualPet adoptablePet) {
-////        String petsAvailable = adoptablePet.getPetName();
-////        myShelter.put(petsAvailable, adoptablePet);
-////    }
-////
-////    public void removeOrganicPet(String upForAdoption) {
-////        myShelter.remove(upForAdoption);
-////
-////    }
-
-
-    //////
-public void addPet(VirtualPet virtualPet) {
-    virtualPet.put(virtualPet.getPetName(), virtualPet);
-
-}
+    }
 
     public void addRoboticPet(VirtualRoboticPet adoptablePet) {
         String name = adoptablePet.getRoboticPetName();
@@ -64,8 +44,6 @@ public void addPet(VirtualPet virtualPet) {
         myOrganicShelter.remove(adoptablePet);
     }
 
-
-    ///////
 
     public Collection<VirtualRoboticPet> roboticPets() {
         return myRoboticShelter;
@@ -88,10 +66,7 @@ public void addPet(VirtualPet virtualPet) {
             );
 
         }
-
-
     }
-
 
     public void showAllRoboticPets() {
         for (VirtualRoboticPet pet : myRoboticShelter) {
@@ -109,7 +84,7 @@ public void addPet(VirtualPet virtualPet) {
 
     public void getPetStats(VirtualPet adoptablePet) {
         for (VirtualOrganicPet pet : myOrganicShelter) {
-            System.out.println("Name : " +pet.getPetName() + "\t| Health " + pet.getHealth()
+            System.out.println("Name : " + pet.getPetName() + "\t| Health " + pet.getHealth()
                     + "\t| Happiness: " + pet.getHappiness());
         }
     }
@@ -133,87 +108,8 @@ public void addPet(VirtualPet virtualPet) {
 
     }
 
-
-
-//    public void feedPets() {
-//        for (VirtualPet pet : availablePets()) {
-//            if (pet instanceof OrganicPet) {
-//                OrganicPet organicPet = (OrganicPet) pet;
-//                organicPet.tick();
-//            } else if (pet instanceof RoboticPet) {
-//                RoboticPet roboticPet = (RoboticPet) pet;
-//                roboticPet.tick();
-//            }
-//
-//
-//        }
-//    }
-//
-//    public void tickAllPets(VirtualPet adoptablePet) {
-//        for (VirtualPet pet : availablePets()) {
-//            if (pet instanceof OrganicPet) {
-//                OrganicPet organicPet = (OrganicPet) pet;
-//                organicPet.water();
-//            }
-//
-//        }
-//
-//    }
-//
-//    public void waterAllPets() {
-//        for (VirtualPet pet : availablePets()) {
-//            if (pet instanceof OrganicPet) {
-//                OrganicPet organicPet = (OrganicPet) pet;
-//                organicPet.water();
-//            }
-//        }
-//    }
-//
-//    public void oilAllRobots() {
-//        for (VirtualPet pet : availablePets()) {
-//            if (pet instanceof RoboticPet) {
-//                RoboticPet roboticPet = (RoboticPet) pet;
-//                roboticPet.getOil();
-//            }
-//        }
-//    }
-//
-//    public boolean hasPets() {
-//        return !myShelter.isEmpty();
-//    }
-//
-//    public void cleanAllCages() {
-//        for (VirtualPet pet : availablePets()) {
-//            if (pet instanceof OrganicDog) {
-//                OrganicDog organicDog = (OrganicDog) pet;
-//                organicDog.cleanCages();
-//            }
-//        }
-//    }
-//
-//    public void emptyLitterBox() {
-//        for (VirtualPet pet : availablePets()) {
-//            if (pet instanceof OrganicCat) {
-//                OrganicCat organicCat = (OrganicCat) pet;
-//                organicCat.emptyLitterBox();
-//            }
-//        }
-//    }
-//
-//    public void walkDogs() {
-//        for (VirtualPet pet : availablePets()) {
-//            if (pet instanceof Dog) {
-//                Dog aDog = (Dog) pet;
-//                aDog.walk();
-//            }
-//        }
-//    }
-
     public void tickAllPets() {
 
-    }
-
-    public void oilAllRobots() {
     }
 
     public void walkDogs() {
@@ -224,10 +120,6 @@ public void addPet(VirtualPet virtualPet) {
 
     public void cleanAllCages() {
 
-    }
-
-    public boolean hasPets() {
-        return false;
     }
 
     public void waterAllPets() {

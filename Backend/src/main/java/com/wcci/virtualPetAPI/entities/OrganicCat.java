@@ -3,7 +3,7 @@ package com.wcci.virtualPetAPI.entities;
 import javax.persistence.*;
 
 @Entity
-public class OrganicCat extends VirtualOrganicPet implements OrganicPet{
+public class OrganicCat extends VirtualOrganicPet implements OrganicPet {
 
     protected int hunger;
     protected int waste;
@@ -24,8 +24,8 @@ public class OrganicCat extends VirtualOrganicPet implements OrganicPet{
     public void walk() {
         happiness += 5;
         health += 5;
-        thirst +=5;
-        hunger -=5;
+        thirst += 5;
+        hunger -= 5;
 
     }
 
@@ -46,19 +46,17 @@ public class OrganicCat extends VirtualOrganicPet implements OrganicPet{
     public void thirst() {
         happiness += 5;
         health += 5;
-        hunger -=5;
-        thirst -=5;
+        hunger -= 5;
+        thirst -= 5;
     }
 
 
     public void emptyLitterBox() {
         happiness += 5;
         health += 5;
-        thirst +=5;
-        hunger -=5;
+        thirst += 5;
+        hunger -= 5;
     }
-
-
 
 
     public int getHunger() {

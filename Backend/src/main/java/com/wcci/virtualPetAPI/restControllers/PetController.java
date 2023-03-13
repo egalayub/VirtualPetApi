@@ -90,8 +90,6 @@ public class PetController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pet not found"));
         if (pet instanceof OrganicPet) {
             ((OrganicPet) pet).walk();
-        } else if (pet instanceof RoboticPet) {
-            ((RoboticPet) pet).walk();
         } else {
 
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unsupported pet type");

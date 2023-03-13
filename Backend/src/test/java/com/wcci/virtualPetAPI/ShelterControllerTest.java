@@ -65,9 +65,6 @@ public class ShelterControllerTest {
                 .andExpect(MockMvcResultMatchers.content().json(getJsonContent(new VirtualPetShelter[]{shelter1, shelter2})));
         mvc.perform(MockMvcRequestBuilders.delete("/shelters/" + shelter1.getPetNamed("")).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-//        mvc.perform(MockMvcRequestBuilders.get("/shelters").accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(MockMvcResultMatchers.content().json(getJsonContent(new VirtualPetShelter[]{shelter2})));
     }
 
 
