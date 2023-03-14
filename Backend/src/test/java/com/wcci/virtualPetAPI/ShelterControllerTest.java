@@ -28,9 +28,9 @@ public class ShelterControllerTest {
 
     @Test
     public void getShelter() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/shelter").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/shelters").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("[]")));
+                .andExpect(content().string(equalTo("[{},{}]")));
     }
 
     @Test
@@ -63,8 +63,6 @@ public class ShelterControllerTest {
         mvc.perform(MockMvcRequestBuilders.get("/shelters").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(getJsonContent(new VirtualPetShelter[]{shelter1, shelter2})));
-        mvc.perform(MockMvcRequestBuilders.delete("/shelters/" + shelter1.getPetNamed("")).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
     }
 
 

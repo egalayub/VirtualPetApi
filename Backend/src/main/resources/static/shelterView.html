@@ -16,9 +16,8 @@
 <h1>Java Junkie Pet Shelter </h1>
 
 <div class="topnav">
-    <a href="#Home">Home <span th:text="${home}"></span> </a>
-    <a href="/templates/PetView.html">View Pets</a>
     <a href="#Shelters">View Shelters <span th:text="${shelter}"></span> </a>
+    <a href="/templates/PetView.html">View Pets</a>
 </div>
 
 
@@ -38,33 +37,33 @@
             </tr>
             <tr>
                 <td>Organic dog</td>
-                <td>dog1</td>
-                <td>5</td>
-                <td>5</td>
+                <td> dog1 </td>
+                <td> 5 </td>
+                <td> 5 </td>
                 <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
                 <td><button type="button">Feed<a th:href="@{${'/feed/' + petName}}"> </a> </button></td>
             </tr>
             <tr>
                 <td>Organic cat</td>
-                <td>cat1</td>
-                <td>5</td>
-                <td>5</td>
+                <td> cat1 </td>
+                <td> 5 </td>
+                <td> 5 </td>
                 <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
                 <td><button type="button">Feed<a th:href="@{${'/feed/' + petName}}"> </a></button></td>
             </tr>
             <tr>
                 <td>Robotic dog</td>
-                <td>dog2</td>
-                <td>2</td>
-                <td>2</td>
+                <td> dog2 </td>
+                <td> 5 </td>
+                <td> 5 </td>
                 <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
                 <td><button type="button">oil<a th:href="@{${'/oil/' + petName}}"></a> </button></td>
             </tr>
             <tr>
                 <td>Robotic cat</td>
-                <td>cat2</td>
-                <td>2</td>
-                <td>2</td>
+                <td> cat2 </td>
+                <td> 5 </td>
+                <td> 5 </td>
                 <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
                 <td><button type="button">oil<a th:href="@{${'/oil/' + petName}}"></a> </button></td>
             </tr>

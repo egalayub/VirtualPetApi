@@ -1,6 +1,5 @@
 package com.wcci.virtualPetAPI.restControllers;
 
-import com.wcci.virtualPetAPI.entities.VirtualOrganicPet;
 import com.wcci.virtualPetAPI.entities.VirtualPetShelter;
 import com.wcci.virtualPetAPI.repositories.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,13 @@ public class ShelterController {
    @GetMapping("/shelters/{shelterId}")
     public VirtualPetShelter getPetShelter (@PathVariable String shelterId){
     return shelterRepository.findById(shelterId).get();
-
    }
+
+    @PostMapping("/shelters")
+    public VirtualPetShelter postShelter (final @RequestBody VirtualPetShelter shelter) {
+        return shelterRepository.save(shelter);
+    }
+
 
 }
 
