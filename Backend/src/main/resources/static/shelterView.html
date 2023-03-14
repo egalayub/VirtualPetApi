@@ -16,7 +16,6 @@
 <h1>Java Junkie Pet Shelter </h1>
 
 <div class="topnav">
-    <a href="#Shelters">View Shelters <span th:text="${shelter}"></span> </a>
     <a href="/templates/petView.html">View Pets</a>
 </div>
 
@@ -36,32 +35,43 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>Organic dog</td>
-                <td> dog1 </td>
+                <td>Organic Dog</td>
+                <td><form>
+                    <input type="text">
+                    </form>
+                </td>
                 <td> 5 </td>
                 <td> 5 </td>
                 <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
                 <td><button type="button">Feed<a th:href="@{${'/feed/' + petName}}"> </a> </button></td>
             </tr>
             <tr>
-                <td>Organic cat</td>
-                <td> cat1 </td>
+                <td>Organic Cat</td>
+                <td><form>
+                    <input type="text">
+                    </form>
+                </td>
                 <td> 5 </td>
                 <td> 5 </td>
                 <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
                 <td><button type="button">Feed<a th:href="@{${'/feed/' + petName}}"> </a></button></td>
             </tr>
             <tr>
-                <td>Robotic dog</td>
-                <td> dog2 </td>
+                <td>Robotic Dog</td>
+                <td><form>
+                    <input type="text">
+                    </form>
+                </td>
                 <td> 5 </td>
                 <td> 5 </td>
                 <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
                 <td><button type="button">oil<a th:href="@{${'/oil/' + petName}}"></a> </button></td>
             </tr>
             <tr>
-                <td>Robotic cat</td>
-                <td> cat2 </td>
+                <td>Robotic Cat</td>
+                <td><form>
+                    <input type="text">
+                    </form> </td>
                 <td> 5 </td>
                 <td> 5 </td>
                 <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
