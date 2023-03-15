@@ -27,7 +27,12 @@ body{
     color: white;
 }
 
-
+.generate-button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 #petImage{
     display: block;
@@ -47,10 +52,21 @@ body{
   }
 
 
-.petTable{
-    position: relative;
+.petTable {
     background-color: #BDCDD6;
     color: black;
+    width: 100%; /* Make the table take up the full width of its container */
+    margin-bottom: 1em; /* Add some space below the table */
+}
 
-  }
+.availablePetsTable{
+    position: center;
+    background-color: #BDCDD6;
+    color: black;
+}
 
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
