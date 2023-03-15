@@ -28,6 +28,8 @@
             <th>Name</th>
             <th>Happiness</th>
             <th>Health</th>
+            <th>Hunger/Oil Level</th>
+            <th>Waste/Battery Life</th>
         </tr>
     </table>
 </div>
@@ -41,6 +43,8 @@
                     <th>Name</th>
                     <th>Happiness</th>
                     <th>Health</th>
+                    <th>Hunger/Oil Level</th>
+                    <th>Waste/Battery Life</th>
                     <th>&nbsp;</th>
                 </tr>
                 <tr>
@@ -55,6 +59,8 @@
                     <td><input type="text" id="customPetName"></td>
                     <td>5</td>
                     <td>5</td>
+                    <td id="customPetStat1">5</td>
+                    <td id="customPetStat2">5</td>
                     <td><button type="submit">Create Custom Pet</button></td>
                 </tr>
             </table>
@@ -73,15 +79,37 @@
         let petTypes = ["Organic Dog", "Organic Cat", "Robotic Dog", "Robotic Cat"];
         let randomPetType = petTypes[Math.floor(Math.random() * petTypes.length)];
 
-        let petNames = ["Buddy", "Charlie", "Max", "Bella", "Lucy", "Molly", "Daisy", "Lola"];
+        let petNames = ["Buddy", "Charlie", "Max", "Bella", "Lucy", "Molly", "Daisy", "Lola", "Fido", "Shadow"];
         let randomPetName = petNames[Math.floor(Math.random() * petNames.length)];
+
+        function getRelevantStats(pet) {
+            if (pet.type.startsWith("Organic")) {
+                return {
+                    happiness: 5,
+                    health: 5,
+                    hunger: 5,
+                    waste: 5
+                };
+            } else {
+                return {
+                    happiness: 5,
+                    health: 5,
+                    oil: 5,
+                    batteryLife: 5
+                };
+            }
+        }
+
+        // Get the relevant stats for the random pet type
+        let relevantStats = getRelevantStats({type: randomPetType});
+
+
 
         // Create a new object with the randomPetType, randomPetName, and other properties
         let newPet = {
             type: randomPetType,
             petName: randomPetName,
-            happiness: 5,
-            health: 5
+            ...relevantStats // Include the relevant stats using the object spread syntax
         };
 
         // Make a POST request to the server
@@ -109,11 +137,21 @@
         let nameCell = newRow.insertCell(1);
         let happinessCell = newRow.insertCell(2);
         let healthCell = newRow.insertCell(3);
+        let otherStat1Cell = newRow.insertCell(4);
+        let otherStat2Cell = newRow.insertCell(5);
 
         typeCell.innerText = pet.type;
         nameCell.innerText = pet.petName;
         happinessCell.innerText = pet.happiness;
         healthCell.innerText = pet.health;
+
+        if (pet.type.startsWith("Organic")) {
+            otherStat1Cell.innerText = pet.hunger;
+            otherStat2Cell.innerText = pet.waste;
+        } else {
+            otherStat1Cell.innerText = pet.oil;
+            otherStat2Cell.innerText = pet.batteryLife;
+        }
     }
 
     function createCustomPet(event) {
@@ -127,11 +165,30 @@
             return;
         }
 
+        function getRelevantStats(pet) {
+            if (pet.type.startsWith("Organic")) {
+                return {
+                    happiness: 5,
+                    health: 5,
+                    hunger: 5,
+                    waste: 5
+                };
+            } else {
+                return {
+                    happiness: 5,
+                    health: 5,
+                    oil: 5,
+                    batteryLife: 5
+                };
+            }
+        }
+
+        let relevantStats = getRelevantStats({type: customPetType});
+
         let customPet = {
             type: customPetType,
             petName: customPetName,
-            happiness: 5,
-            health: 5
+            ...relevantStats // Include the relevant stats using the object spread syntax
         };
 
         // Make a POST request to the server
