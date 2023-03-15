@@ -11,7 +11,7 @@ abstract public class VirtualPet {
     protected int health;
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
     @ManyToOne
     private VirtualPetShelter shelter;
 

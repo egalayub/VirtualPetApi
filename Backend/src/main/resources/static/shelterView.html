@@ -19,68 +19,139 @@
     <a href="/templates/petView.html">View Pets</a>
 </div>
 
-
-
 <img id="petImage" src="https://media.istockphoto.com/id/1411763501/photo/banner-head-pets-cat-and-dog-hiding-isolated-on-blue-pastel-background.jpg?b=1&s=170667a&w=0&k=20&c=NhPsKS2YepUhbOxThF4ks7YsQ3HMrvEKQ444wAfRCyw=">
 
+<div>
+    <table class="petTable" id="availablePetsTable">
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Happiness</th>
+            <th>Health</th>
+        </tr>
+    </table>
+</div>
 
 <div class="cats-and-dogs" id="pets">
     <section id="cats-and-dogs">
-        <table class="petTable">
-            <tr>
-                <td>Type <span th:text="${type}"></span></td>
-                <td>Name <span th:text="${petName}"></span> </td>
-                <td>Happiness <span th:text="${happiness}"> </span></td>
-                <td>Health <span th:text="${health}"> </span> </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>Organic Dog</td>
-                <td><form>
-                    <input type="text">
-                    </form>
-                </td>
-                <td> 5 </td>
-                <td> 5 </td>
-                <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
-                <td><button type="button">Feed<a th:href="@{${'/feed/' + petName}}"> </a> </button></td>
-            </tr>
-            <tr>
-                <td>Organic Cat</td>
-                <td><form>
-                    <input type="text">
-                    </form>
-                </td>
-                <td> 5 </td>
-                <td> 5 </td>
-                <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
-                <td><button type="button">Feed<a th:href="@{${'/feed/' + petName}}"> </a></button></td>
-            </tr>
-            <tr>
-                <td>Robotic Dog</td>
-                <td><form>
-                    <input type="text">
-                    </form>
-                </td>
-                <td> 5 </td>
-                <td> 5 </td>
-                <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
-                <td><button type="button">oil<a th:href="@{${'/oil/' + petName}}"></a> </button></td>
-            </tr>
-            <tr>
-                <td>Robotic Cat</td>
-                <td><form>
-                    <input type="text">
-                    </form> </td>
-                <td> 5 </td>
-                <td> 5 </td>
-                <td><button type="button">Adopt<a th:href="@{/adopt/{petName}(id=${petName})}"></a> </button></td>
-                <td><button type="button">oil<a th:href="@{${'/oil/' + petName}}"></a> </button></td>
-            </tr>
-        </table>
+        <form id="customPetForm">
+            <table class="petTable" id="petCreationTable">
+                <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Happiness</th>
+                    <th>Health</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="customPetType">
+                            <option value="Organic Dog">Organic Dog</option>
+                            <option value="Organic Cat">Organic Cat</option>
+                            <option value="Robotic Dog">Robotic Dog</option>
+                            <option value="Robotic Cat">Robotic Cat</option>
+                        </select>
+                    </td>
+                    <td><input type="text" id="customPetName"></td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td><button type="submit">Create Custom Pet</button></td>
+                </tr>
+            </table>
+        </form>
     </section>
 </div>
 
+<div class="generate-button">
+    <button id="generateRandomPet" type="button">Generate Random Pet</button>
+</div>
+
+<script>
+    document.getElementById("generateRandomPet").addEventListener("click", generateRandomPet);
+    document.getElementById("customPetForm").addEventListener("submit", createCustomPet);
+    function generateRandomPet() {
+        let petTypes = ["Organic Dog", "Organic Cat", "Robotic Dog", "Robotic Cat"];
+        let randomPetType = petTypes[Math.floor(Math.random() * petTypes.length)];
+
+        let petNames = ["Buddy", "Charlie", "Max", "Bella", "Lucy", "Molly", "Daisy", "Lola"];
+        let randomPetName = petNames[Math.floor(Math.random() * petNames.length)];
+
+        // Create a new object with the randomPetType, randomPetName, and other properties
+        let newPet = {
+            type: randomPetType,
+            petName: randomPetName,
+            happiness: 5,
+            health: 5
+        };
+
+        // Make a POST request to the server
+        fetch("/pets", {
+            method: "POST",
+            body: JSON.stringify(newPet),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            if (response.ok) {
+                addPetToAvailablePetsTable(newPet);
+                alert("Random pet generated successfully!");
+            } else {
+                alert("Error generating random pet");
+            }
+        });
+    }
+
+    function addPetToAvailablePetsTable(pet) {
+        let table = document.getElementById("availablePetsTable");
+        let newRow = table.insertRow(-1);
+
+        let typeCell = newRow.insertCell(0);
+        let nameCell = newRow.insertCell(1);
+        let happinessCell = newRow.insertCell(2);
+        let healthCell = newRow.insertCell(3);
+
+        typeCell.innerText = pet.type;
+        nameCell.innerText = pet.petName;
+        happinessCell.innerText = pet.happiness;
+        healthCell.innerText = pet.health;
+    }
+
+    function createCustomPet(event) {
+        event.preventDefault();
+
+        let customPetType = document.getElementById("customPetType").value;
+        let customPetName = document.getElementById("customPetName").value;
+
+        if (!customPetName) {
+            alert("Please enter a name for the custom pet.");
+            return;
+        }
+
+        let customPet = {
+            type: customPetType,
+            petName: customPetName,
+            happiness: 5,
+            health: 5
+        };
+
+        // Make a POST request to the server
+        fetch("/pets", {
+            method: "POST",
+            body: JSON.stringify(customPet),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            if (response.ok) {
+                addPetToAvailablePetsTable(customPet);
+                alert("Custom pet created successfully!");
+                document.getElementById("customPetName").value = ""; // Clear the name input
+            } else {
+                alert("Error creating custom pet");
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
