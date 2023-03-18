@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <title>Pet Shelter</title>
 
-    <link rel = "stylesheet" href="css/shelterView.css">
+    <link rel="stylesheet" href="css/shelterView.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -21,194 +20,65 @@
 
 <img id="petImage" src="https://media.istockphoto.com/id/1411763501/photo/banner-head-pets-cat-and-dog-hiding-isolated-on-blue-pastel-background.jpg?b=1&s=170667a&w=0&k=20&c=NhPsKS2YepUhbOxThF4ks7YsQ3HMrvEKQ444wAfRCyw=">
 
+<!-- Add two separate tables for organic and robotic pets -->
 <div>
-    <table class="petTable" id="availablePetsTable">
+    <h2>Organic Pets</h2>
+    <table class="petTable" id="organicPetsTable">
         <tr>
             <th>Type</th>
             <th>Name</th>
             <th>Happiness</th>
-            <th>Health</th>
-            <th>Hunger/Oil Level</th>
-            <th>Waste/Battery Life</th>
+            <th>Hunger</th>
+            <th>Waste</th>
+            <th>Play</th>
+            <th>Feed and Water</th>
+            <th>Clean</th>
+            <th>Adopt</th>
         </tr>
     </table>
 </div>
 
-<div class="cats-and-dogs" id="pets">
-    <section id="cats-and-dogs">
-        <form id="customPetForm">
-            <table class="petTable" id="petCreationTable">
-                <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Happiness</th>
-                    <th>Health</th>
-                    <th>Hunger/Oil Level</th>
-                    <th>Waste/Battery Life</th>
-                    <th>&nbsp;</th>
-                </tr>
-                <tr>
-                    <td>
-                        <select id="customPetType">
-                            <option value="Organic Dog">Organic Dog</option>
-                            <option value="Organic Cat">Organic Cat</option>
-                            <option value="Robotic Dog">Robotic Dog</option>
-                            <option value="Robotic Cat">Robotic Cat</option>
-                        </select>
-                    </td>
-                    <td><input type="text" id="customPetName"></td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td id="customPetStat1">5</td>
-                    <td id="customPetStat2">5</td>
-                    <td><button type="submit">Create Custom Pet</button></td>
-                </tr>
-            </table>
-        </form>
-    </section>
+<div>
+    <h2>Robotic Pets</h2>
+    <table class="petTable" id="roboticPetsTable">
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Happiness</th>
+            <th>Oil Level</th>
+            <th>Battery Life</th>
+            <th>Play</th>
+            <th>Recharge</th>
+            <th>Change Oil</th>
+            <th>Adopt</th>
+        </tr>
+    </table>
+</div>
+
+<!-- Add form for creating a custom pet -->
+<div class="create-custom-pet">
+    <h3>Create Custom Pet</h3>
+    <form id="customPetForm">
+        <label for="customPetType">Type:</label>
+        <select id="customPetType" name="customPetType" required>
+            <option value="Organic Dog">Organic Dog</option>
+            <option value="Organic Cat">Organic Cat</option>
+            <option value="Robotic Dog">Robotic Dog</option>
+            <option value="Robotic Cat">Robotic Cat</option>
+        </select>
+
+        <label for="customPetName">Name:</label>
+        <input type="text" id="customPetName" name="customPetName" required>
+
+        <button type="submit">Create Custom Pet</button>
+    </form>
 </div>
 
 <div class="generate-button">
     <button id="generateRandomPet" type="button">Generate Random Pet</button>
 </div>
 
-<script>
-    document.getElementById("generateRandomPet").addEventListener("click", generateRandomPet);
-    document.getElementById("customPetForm").addEventListener("submit", createCustomPet);
-    function generateRandomPet() {
-        let petTypes = ["Organic Dog", "Organic Cat", "Robotic Dog", "Robotic Cat"];
-        let randomPetType = petTypes[Math.floor(Math.random() * petTypes.length)];
-
-        let petNames = ["Buddy", "Charlie", "Max", "Bella", "Lucy", "Molly", "Daisy", "Lola", "Fido", "Shadow"];
-        let randomPetName = petNames[Math.floor(Math.random() * petNames.length)];
-
-        function getRelevantStats(pet) {
-            if (pet.type.startsWith("Organic")) {
-                return {
-                    happiness: 5,
-                    health: 5,
-                    hunger: 5,
-                    waste: 5
-                };
-            } else {
-                return {
-                    happiness: 5,
-                    health: 5,
-                    oil: 5,
-                    batteryLife: 5
-                };
-            }
-        }
-
-        // Get the relevant stats for the random pet type
-        let relevantStats = getRelevantStats({type: randomPetType});
-
-
-
-        // Create a new object with the randomPetType, randomPetName, and other properties
-        let newPet = {
-            type: randomPetType,
-            petName: randomPetName,
-            ...relevantStats // Include the relevant stats using the object spread syntax
-        };
-
-        // Make a POST request to the server
-        fetch("/pets", {
-            method: "POST",
-            body: JSON.stringify(newPet),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(response => {
-            if (response.ok) {
-                addPetToAvailablePetsTable(newPet);
-                alert("Random pet generated successfully!");
-            } else {
-                alert("Error generating random pet");
-            }
-        });
-    }
-
-    function addPetToAvailablePetsTable(pet) {
-        let table = document.getElementById("availablePetsTable");
-        let newRow = table.insertRow(-1);
-
-        let typeCell = newRow.insertCell(0);
-        let nameCell = newRow.insertCell(1);
-        let happinessCell = newRow.insertCell(2);
-        let healthCell = newRow.insertCell(3);
-        let otherStat1Cell = newRow.insertCell(4);
-        let otherStat2Cell = newRow.insertCell(5);
-
-        typeCell.innerText = pet.type;
-        nameCell.innerText = pet.petName;
-        happinessCell.innerText = pet.happiness;
-        healthCell.innerText = pet.health;
-
-        if (pet.type.startsWith("Organic")) {
-            otherStat1Cell.innerText = pet.hunger;
-            otherStat2Cell.innerText = pet.waste;
-        } else {
-            otherStat1Cell.innerText = pet.oil;
-            otherStat2Cell.innerText = pet.batteryLife;
-        }
-    }
-
-    function createCustomPet(event) {
-        event.preventDefault();
-
-        let customPetType = document.getElementById("customPetType").value;
-        let customPetName = document.getElementById("customPetName").value;
-
-        if (!customPetName) {
-            alert("Please enter a name for the custom pet.");
-            return;
-        }
-
-        function getRelevantStats(pet) {
-            if (pet.type.startsWith("Organic")) {
-                return {
-                    happiness: 5,
-                    health: 5,
-                    hunger: 5,
-                    waste: 5
-                };
-            } else {
-                return {
-                    happiness: 5,
-                    health: 5,
-                    oil: 5,
-                    batteryLife: 5
-                };
-            }
-        }
-
-        let relevantStats = getRelevantStats({type: customPetType});
-
-        let customPet = {
-            type: customPetType,
-            petName: customPetName,
-            ...relevantStats // Include the relevant stats using the object spread syntax
-        };
-
-        // Make a POST request to the server
-        fetch("/pets", {
-            method: "POST",
-            body: JSON.stringify(customPet),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(response => {
-            if (response.ok) {
-                addPetToAvailablePetsTable(customPet);
-                alert("Custom pet created successfully!");
-                document.getElementById("customPetName").value = ""; // Clear the name input
-            } else {
-                alert("Error creating custom pet");
-            }
-        });
-    }
-</script>
+<script src="js/petShelter.js"></script>
 
 </body>
 </html>
